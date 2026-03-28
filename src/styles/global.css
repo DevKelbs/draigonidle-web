@@ -348,6 +348,13 @@ main {
   flex-shrink: 0;
 }
 
+/* --- CTA Social Line -------------------------------------- */
+.cta-social {
+  margin-top: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
 /* --- Feature Cards ---------------------------------------- */
 .features-grid {
   display: grid;
