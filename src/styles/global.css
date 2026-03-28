@@ -348,6 +348,31 @@ main {
   flex-shrink: 0;
 }
 
+/* --- Email Signup ----------------------------------------- */
+.email-signup {
+  text-align: center;
+}
+
+.email-signup .container {
+  max-width: 640px;
+}
+
+.signup-tagline {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 52ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-8);
+}
+
+.signup-embed {
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  overflow: hidden;
+}
+
 /* --- CTA Social Line -------------------------------------- */
 .cta-social {
   margin-top: var(--space-6);
