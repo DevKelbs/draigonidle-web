@@ -3,6 +3,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/patch-notes", label: "Patch Notes" },
   { href: "/press-kit", label: "Press Kit" },
+  { href: "https://wiki.draigonidle.com", label: "Wiki", external: true },
 ];
 
 const { pathname } = Astro.url;
@@ -15,10 +16,12 @@ const { pathname } = Astro.url;
     </a>
 
     <nav class="site-nav" aria-label="Main navigation">
-      {navLinks.map(({ href, label }) => (
+      {navLinks.map(({ href, label, external }) => (
         <a
           href={href}
           aria-current={pathname === href ? "page" : undefined}
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
         >
           {label}
         </a>
