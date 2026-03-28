@@ -156,11 +156,13 @@ main {
 
 .site-logo {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   font-weight: var(--weight-bold);
   color: var(--color-accent);
   text-decoration: none;
   letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .site-logo:hover {
@@ -170,16 +172,18 @@ main {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-3);
+  flex-shrink: 0;
 }
 
 .site-nav a {
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   font-weight: var(--weight-medium);
   color: var(--color-text-muted);
   text-decoration: none;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: nowrap;
   transition: color var(--transition-fast);
 }
 
@@ -465,6 +469,18 @@ main {
 @media (min-width: 640px) {
   :root {
     --container-padding: var(--space-6);
+  }
+
+  .site-logo {
+    font-size: var(--text-xl);
+  }
+
+  .site-nav {
+    gap: var(--space-6);
+  }
+
+  .site-nav a {
+    font-size: var(--text-sm);
   }
 
   .hero-title {
