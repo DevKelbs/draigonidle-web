@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const patches = [
+  {
+    version: "0.1.0",
+    date: "Coming Soon",
+    title: "Early Access Launch",
+    changes: [
+      "Initial release — thank you for playing!",
+      "Core idle loop: hatch dragons, collect gold, upgrade your hoard",
+      "12 starter dragons across 4 biomes",
+      "Prestige system unlocked at hoard level 50",
+      "Daily login rewards",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Patch Notes"
+  description="Draigon Idle patch notes — follow every update, fix, and new feature as the game evolves."
+>
+  <section class="section" aria-labelledby="patch-title">
+    <div class="container">
+      <p class="section-label">Development Updates</p>
+      <h1 class="section-title" id="patch-title">Patch Notes</h1>
+      <p class="section-body">
+        Track every update to Draigon Idle — new features, balance changes, and
+        bug fixes. The game is actively in development; expect frequent updates.
+      </p>
+
+      <ol class="patch-list" reversed aria-label="Version history">
+        {
+          patches.map(({ version, date, title, changes }) => (
+            <li class="patch-entry">
+              <header class="patch-entry-header">
+                <span class="patch-version">v{version}</span>
+                <time class="patch-date" datetime={date !== "Coming Soon" ? date : undefined}>
+                  {date}
+                </time>
+                <span style="color: var(--color-text-muted); font-size: var(--text-sm);">
+                  — {title}
+                </span>
+              </header>
+              <ul class="patch-changes" style="list-style: disc; padding-left: var(--space-6);">
+                {changes.map((change) => (
+                  <li style="margin-bottom: var(--space-1);">{change}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ol>
+
+      <p style="margin-top: var(--space-8); font-size: var(--text-sm); color: var(--color-text-muted);">
+        Game not released yet — patch notes will appear here on launch. Follow
+        <a href="https://stonemillstudios.com">Stonemill Studios</a> for the latest news.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
