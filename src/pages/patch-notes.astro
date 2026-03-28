@@ -1,20 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const patches = [
-  {
-    version: "0.1.0",
-    date: "Coming Soon",
-    title: "Early Access Launch",
-    changes: [
-      "Initial release — thank you for playing!",
-      "Core idle loop: hatch dragons, collect gold, upgrade your hoard",
-      "12 starter dragons across 4 biomes",
-      "Prestige system unlocked at hoard level 50",
-      "Daily login rewards",
-    ],
-  },
-];
+const patches: {
+  version: string;
+  date: string;
+  title: string;
+  changes: string[];
+}[] = [];
 ---
 
 <BaseLayout
