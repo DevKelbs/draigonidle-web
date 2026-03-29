@@ -17,6 +17,42 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 const pageTitle = title === "Draigon Idle" ? title : `${title} — Draigon Idle`;
+
+const siteUrl = (Astro.site?.toString() ?? "https://draigonidle.com").replace(/\/$/, "");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://stonemillstudios.com/#organization",
+      name: "Stonemill Studios",
+      url: "https://stonemillstudios.com",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Draigon Idle",
+      publisher: { "@id": "https://stonemillstudios.com/#organization" },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${siteUrl}/#app`,
+      name: "Draigon Idle",
+      description:
+        "A narrative idle RPG for iOS and Android. Build your guild, explore six regions, and uncover the ruins of an ancient civilization.",
+      applicationCategory: "GameApplication",
+      operatingSystem: "iOS, Android",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      publisher: { "@id": "https://stonemillstudios.com/#organization" },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -49,6 +85,9 @@ const pageTitle = title === "Draigon Idle" ? title : `${title} — Draigon Idle`
 
     <!-- Theme color for mobile browsers -->
     <meta name="theme-color" content="#0d0d14" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <Header />
