@@ -317,6 +317,11 @@ main {
   color: var(--color-accent);
 }
 
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* --- App Store Badges ------------------------------------- */
 .badge-group {
   display: flex;
