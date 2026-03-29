@@ -1,0 +1,203 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const lastUpdated = "March 29, 2026";
+---
+
+<BaseLayout
+  title="Terms of Service"
+  description="Terms of Service for Draigon Idle — the rules governing your use of the game and website."
+>
+  <section class="section" aria-labelledby="terms-title">
+    <div class="container">
+      <p class="section-label">Legal</p>
+      <h1 class="section-title" id="terms-title">Terms of Service</h1>
+      <p class="section-body">
+        Last updated: {lastUpdated}
+      </p>
+
+      <div class="legal-content">
+        <p>
+          Please read these Terms of Service ("<strong>Terms</strong>")
+          carefully before using the Draigon Idle mobile game
+          (the "<strong>Game</strong>") or the website draigonidle.com
+          (the "<strong>Site</strong>"), both operated by Stonemill Studios
+          ("<strong>we</strong>," "<strong>us</strong>," or
+          "<strong>our</strong>").
+        </p>
+        <p>
+          By downloading, installing, or playing the Game, or by accessing
+          the Site, you agree to be bound by these Terms. If you do not
+          agree, do not use the Game or Site.
+        </p>
+
+        <h2>1. Eligibility</h2>
+        <p>
+          You must be at least 13 years old to use the Game or Site. By
+          using the Game or Site, you represent that you meet this
+          requirement. If you are under the age of majority in your
+          jurisdiction, you represent that a parent or guardian has reviewed
+          and agreed to these Terms on your behalf.
+        </p>
+
+        <h2>2. License to Play</h2>
+        <p>
+          Subject to these Terms, we grant you a limited, non-exclusive,
+          non-transferable, revocable license to download and play the Game
+          for your personal, non-commercial use. This license does not include
+          the right to:
+        </p>
+        <ul>
+          <li>Modify, reverse-engineer, or decompile the Game</li>
+          <li>Redistribute or resell access to the Game</li>
+          <li>Use the Game for commercial purposes without our written consent</li>
+          <li>Exploit bugs or glitches for unfair advantage</li>
+          <li>Use third-party tools to automate gameplay</li>
+        </ul>
+
+        <h2>3. Virtual Items and Currency</h2>
+        <p>
+          The Game may include virtual currencies, items, or other
+          digital content (collectively, "<strong>Virtual Items</strong>").
+          Virtual Items have no real-world monetary value, cannot be
+          transferred or redeemed for real money, and are licensed to you
+          — not sold. We reserve the right to modify, suspend, or remove
+          Virtual Items at any time.
+        </p>
+
+        <h2>4. User Conduct</h2>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Harass, threaten, or harm other players</li>
+          <li>Engage in cheating, hacking, or exploiting the Game</li>
+          <li>Attempt to gain unauthorized access to our systems</li>
+          <li>Impersonate Stonemill Studios or any of our staff</li>
+          <li>Use the Game or Site for any unlawful purpose</li>
+        </ul>
+
+        <h2>5. Intellectual Property</h2>
+        <p>
+          All content in the Game and on the Site — including art, music,
+          text, code, characters, world design, and the Draigon Idle name
+          and logo — is the exclusive property of Stonemill Studios and is
+          protected by copyright, trademark, and other applicable laws.
+        </p>
+        <p>
+          You may not reproduce, distribute, or create derivative works from
+          our content without our prior written permission, except for
+          personal fan art and non-commercial community content shared with
+          clear attribution.
+        </p>
+
+        <h2>6. Cloud Saves and Game Data</h2>
+        <p>
+          If you use the cloud save feature, your game data is stored on our
+          servers via Firebase Firestore. While we take reasonable precautions
+          to protect your data, we cannot guarantee against all loss or
+          corruption. You are responsible for maintaining any local backups
+          you consider important.
+        </p>
+        <p>
+          We reserve the right to reset, modify, or delete cloud save data as
+          required for maintenance, security, or to address violations of
+          these Terms.
+        </p>
+
+        <h2>7. Disclaimers</h2>
+        <p>
+          The Game and Site are provided "<strong>as is</strong>" without
+          warranties of any kind, express or implied. We do not warrant that
+          the Game will be uninterrupted, error-free, or free of harmful
+          components. Your use of the Game is at your own risk.
+        </p>
+
+        <h2>8. Limitation of Liability</h2>
+        <p>
+          To the fullest extent permitted by applicable law, Stonemill Studios
+          shall not be liable for any indirect, incidental, special,
+          consequential, or punitive damages arising from your use of, or
+          inability to use, the Game or Site — including loss of data or
+          game progress.
+        </p>
+
+        <h2>9. Termination</h2>
+        <p>
+          We may suspend or terminate your access to the Game at our
+          discretion, with or without notice, if you violate these Terms or
+          engage in conduct we deem harmful to the Game or its community.
+          Upon termination, your license to use the Game immediately ends.
+        </p>
+
+        <h2>10. Changes to These Terms</h2>
+        <p>
+          We may update these Terms from time to time. When we do, we will
+          revise the "Last updated" date at the top of this page. Continued
+          use of the Game or Site after changes are posted constitutes your
+          acceptance of the updated Terms.
+        </p>
+
+        <h2>11. Governing Law</h2>
+        <p>
+          These Terms are governed by the laws of the jurisdiction in which
+          Stonemill Studios is incorporated, without regard to conflict of
+          law principles.
+        </p>
+
+        <h2>12. Contact Us</h2>
+        <p>
+          Questions about these Terms? Contact us at:
+        </p>
+        <address>
+          Stonemill Studios<br />
+          <a href="mailto:legal@stonemillstudios.com">legal@stonemillstudios.com</a>
+        </address>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-content {
+    margin-top: var(--space-8);
+    max-width: 72ch;
+    color: var(--color-text-muted);
+    line-height: var(--leading-normal);
+  }
+
+  .legal-content > * + * {
+    margin-top: var(--space-6);
+  }
+
+  .legal-content h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-accent);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-3);
+  }
+
+  .legal-content p {
+    font-size: var(--text-sm);
+  }
+
+  .legal-content ul {
+    list-style: disc;
+    padding-left: var(--space-6);
+    font-size: var(--text-sm);
+  }
+
+  .legal-content ul li + li {
+    margin-top: var(--space-2);
+  }
+
+  .legal-content address {
+    font-style: normal;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .legal-content strong {
+    color: var(--color-text);
+    font-weight: var(--weight-semibold);
+  }
+</style>
