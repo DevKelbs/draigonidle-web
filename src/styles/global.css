@@ -202,33 +202,7 @@ main {
   color: var(--color-accent);
 }
 
-/* --- Footer ----------------------------------------------- */
-.site-footer {
-  background-color: var(--color-bg-surface);
-  border-top: 1px solid var(--color-border);
-  padding-block: var(--space-8);
-  margin-top: var(--space-16);
-}
-
-.site-footer .container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  text-align: center;
-}
-
-.site-footer p {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-}
-
-.site-footer a {
-  color: var(--color-text-muted);
-}
-
-.site-footer a:hover {
-  color: var(--color-accent);
-}
+/* --- Footer — see Footer.astro for scoped styles ---------- */
 
 /* --- Section ---------------------------------------------- */
 .section {
@@ -667,12 +641,6 @@ main {
 
   .press-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .site-footer .container {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
   }
 }
 

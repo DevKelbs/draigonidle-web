@@ -22,7 +22,7 @@ const patches: {
       { section: "Ashenveil Woods" },
       "Ashenveil is fully built: Dozens of quests across the region — main story, side content, and faction work, a full cast of NPCs, multiple discovery nodes, 3 expedition destinations (Grove Patrol, Deep Forest, Draigon Ruins), and 6 outpost buildings (Canopy Hall, Herbalist Shop, Enchanting Altar, Druid Sanctum, Scouts Post, Sanctuary). The forest has layers. You'll find most of them.",
       "The Verdant Circle arrive as a faction — druidic recluses who've been watching the draigons longer than anyone. Completing their faction quests unlocks deeper Herbalism mastery and enchanting. Getting in good with them pays off.",
-      "Enchanting is live, and it belongs to Ashenveil. The Verdant Circle unlocks it. Multiple enchantment tiers, from basic enhancements to elite-tier upgrades. One enchantment slot per gear piece. Enchanted gear gets a purple glow and a \u2726 badge on bank tiles. Applying a new enchantment over an old one destroys the old one — no refund.",
+      "Enchanting is live, and it belongs to Ashenveil. The Verdant Circle unlocks it. Multiple enchantment tiers, from basic enhancements to elite-tier upgrades. One enchantment slot per gear piece. Enchanted gear gets a purple glow and a ✦ badge on bank tiles. Applying a new enchantment over an old one destroys the old one — no refund.",
       "Every outpost, enemy, and discovery node in Ashenveil has its own illustrated look.",
       { section: "Iron Hollows" },
       "Iron Hollows is open: Dozens of quests across the region — main story, side content, and faction work, a full cast of NPCs, multiple discovery nodes, 3 expedition destinations (Deep Seam CP 28, Ancient Forge CP 42, Draigon Shaft CP 55), and 6 outpost buildings (Consortium Hall, Deep Forge, Miners Hall, Ore Depot, Shaft Entrance, Smeltery). The Ironbound Consortium runs the place. They have opinions about mithril.",
@@ -67,6 +67,9 @@ const patches: {
     ],
   },
 ];
+
+const latest = patches[0];
+const older = patches.slice(1);
 ---
 
 <BaseLayout
@@ -81,49 +84,282 @@ const patches: {
         Track every update to Draigon Idle — new features, balance changes, and
         bug fixes. The game is actively in development; expect frequent updates.
       </p>
+    </div>
+  </section>
 
-      <ol class="patch-list" reversed aria-label="Version history">
-        {
-          patches.map(({ version, date, title, type, intro, changes }) => (
-            <li class="patch-entry">
-              <header class="patch-entry-header">
-                <span class="patch-version">
-                  {type === "devlog" ? version : `v${version}`}
-                </span>
-                <time
-                  class="patch-date"
-                  datetime={date !== "Coming Soon" ? date : undefined}
-                >
-                  {date}
-                </time>
-                <span style="color: var(--color-text-muted); font-size: var(--text-sm);">
-                  — {title}
-                </span>
-              </header>
-              {intro && (
-                <blockquote class="patch-intro">{intro}</blockquote>
+  <section class="section patch-section" aria-label="Version history">
+    <div class="container patch-layout">
+
+      <!-- Sticky TOC sidebar (desktop only) -->
+      <aside class="patch-toc" aria-label="Version navigation">
+        <p class="toc-heading">Versions</p>
+        <nav>
+          <ul>
+            {patches.map(({ version }) => (
+              <li>
+                <a href={`#v${version}`} class="toc-link">{version}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Timeline -->
+      <ol class="patch-timeline" reversed aria-label="Patch timeline">
+
+        <!-- Latest entry — always expanded -->
+        <li class="timeline-entry" id={`v${latest.version}`}>
+          <div class="timeline-node" aria-hidden="true">
+            <span class="node-badge">{latest.version}</span>
+          </div>
+          <div class="patch-card patch-card--latest">
+            <header class="patch-card-header">
+              <time class="patch-date" datetime={latest.date}>{latest.date}</time>
+              <span class="patch-title-text">— {latest.title}</span>
+            </header>
+            {latest.intro && (
+              <blockquote class="patch-intro">{latest.intro}</blockquote>
+            )}
+            <ul class="patch-changes" style="list-style: disc; padding-left: var(--space-6);">
+              {latest.changes.map((item) =>
+                typeof item === "string" ? (
+                  <li style="margin-bottom: var(--space-1);">{item}</li>
+                ) : (
+                  <li class="patch-section-heading">{item.section}</li>
+                )
               )}
-              <ul
-                class="patch-changes"
-                style="list-style: disc; padding-left: var(--space-6);"
-              >
-                {changes.map((item) =>
-                  typeof item === "string" ? (
-                    <li style="margin-bottom: var(--space-1);">{item}</li>
-                  ) : (
-                    <li class="patch-section-heading">{item.section}</li>
-                  )
-                )}
-              </ul>
-            </li>
-          ))
-        }
+            </ul>
+          </div>
+        </li>
+
+        <!-- Older entries — collapsible -->
+        {older.map(({ version, date, title, type, intro, changes }) => (
+          <li class="timeline-entry" id={`v${version}`}>
+            <div class="timeline-node" aria-hidden="true">
+              <span class="node-badge node-badge--older">{version}</span>
+            </div>
+            <div class="patch-card">
+              <details>
+                <summary class="patch-summary">
+                  <header class="patch-card-header">
+                    <time class="patch-date" datetime={date !== "Coming Soon" ? date : undefined}>{date}</time>
+                    <span class="patch-title-text">— {title}</span>
+                  </header>
+                </summary>
+                <div class="patch-details-body">
+                  {intro && (
+                    <blockquote class="patch-intro">{intro}</blockquote>
+                  )}
+                  <ul class="patch-changes" style="list-style: disc; padding-left: var(--space-6);">
+                    {changes.map((item) =>
+                      typeof item === "string" ? (
+                        <li style="margin-bottom: var(--space-1);">{item}</li>
+                      ) : (
+                        <li class="patch-section-heading">{item.section}</li>
+                      )
+                    )}
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </li>
+        ))}
+
       </ol>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  /* ---- Layout -------------------------------------------- */
+  .patch-section {
+    padding-top: 0;
+  }
+
+  .patch-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* ---- TOC sidebar --------------------------------------- */
+  .patch-toc {
+    display: none;
+  }
+
+  .toc-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  .patch-toc nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .toc-link {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .toc-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* ---- Timeline ------------------------------------------ */
+  .patch-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    padding-left: var(--space-10);
+  }
+
+  /* Vertical line */
+  .patch-timeline::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--space-3) - 1px);
+    top: var(--space-4);
+    bottom: var(--space-4);
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-accent) 0%,
+      var(--color-accent-dim) 40%,
+      var(--color-border) 100%
+    );
+  }
+
+  /* ---- Timeline node ------------------------------------- */
+  .timeline-entry {
+    position: relative;
+  }
+
+  .timeline-node {
+    position: absolute;
+    left: calc(-1 * var(--space-10));
+    top: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-6);
+    height: var(--space-6);
+  }
+
+  .node-badge {
+    font-family: var(--font-display);
+    font-size: 0.6rem;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.06em;
+    color: var(--color-bg);
+    background-color: var(--color-accent);
+    border-radius: 999px;
+    padding: 2px 6px;
+    white-space: nowrap;
+    line-height: 1.4;
+  }
+
+  .node-badge--older {
+    background-color: var(--color-accent-dim);
+  }
+
+  /* ---- Patch cards --------------------------------------- */
+  .patch-card {
+    position: relative;
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+
+  .patch-card--latest {
+    border-color: var(--color-accent-dim);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(200, 168, 75, 0.08);
+  }
+
+  /* Grain overlay */
+  .patch-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    background-repeat: repeat;
+    opacity: 0.03;
+    mix-blend-mode: overlay;
+  }
+
+  /* ---- Card header --------------------------------------- */
+  .patch-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .patch-date {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .patch-title-text {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+  }
+
+  /* ---- Collapsible details ------------------------------- */
+  .patch-summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .patch-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .patch-summary .patch-card-header {
+    margin-bottom: 0;
+  }
+
+  details[open] .patch-summary .patch-card-header {
+    margin-bottom: var(--space-4);
+  }
+
+  .patch-details-body {
+    /* revealed when <details> is open */
+  }
+
+  details .patch-summary::after {
+    content: " ▸";
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    margin-left: var(--space-2);
+  }
+
+  details[open] .patch-summary::after {
+    content: " ▾";
+  }
+
+  /* ---- Intro blockquote ---------------------------------- */
   .patch-intro {
     border-left: 3px solid var(--color-accent-dim);
     margin: 0 0 var(--space-4);
@@ -134,15 +370,36 @@ const patches: {
     line-height: var(--leading-normal);
   }
 
+  /* ---- Change list --------------------------------------- */
+  .patch-changes {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
   .patch-section-heading {
     list-style: none;
     margin-left: calc(-1 * var(--space-6));
     margin-top: var(--space-4);
     margin-bottom: var(--space-2);
-    font-size: var(--text-sm);
-    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.10em;
     color: var(--color-accent);
-    letter-spacing: 0.04em;
     text-transform: uppercase;
+  }
+
+  /* ---- Desktop layout ------------------------------------ */
+  @media (min-width: 1024px) {
+    .patch-layout {
+      grid-template-columns: 140px 1fr;
+      align-items: start;
+    }
+
+    .patch-toc {
+      display: block;
+      position: sticky;
+      top: calc(64px + var(--space-8));
+    }
   }
 </style>
