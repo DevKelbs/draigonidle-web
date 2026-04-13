@@ -154,6 +154,11 @@ main {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-base);
+}
+
+.site-header[data-scrolled] {
+  background-color: rgba(13, 13, 20, 1);
 }
 
 .site-header .container {
@@ -615,6 +620,100 @@ main {
 .patch-changes {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
+}
+
+/* --- Mobile Nav ------------------------------------------- */
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .site-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  /* Hide default disclosure marker */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    list-style: none;
+    border-radius: var(--radius-sm);
+  }
+
+  .hamburger::-webkit-details-marker {
+    display: none;
+  }
+
+  .hamburger-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--color-text);
+    border-radius: 1px;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+  }
+
+  /* Animate bars to × when open */
+  details[open] .hamburger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  details[open] .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  details[open] .hamburger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Full-screen overlay */
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    top: 64px;
+    z-index: 50;
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-6) var(--space-4);
+    overflow-y: auto;
+  }
+
+  .mobile-overlay nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-overlay a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding-inline: var(--space-4);
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .mobile-overlay a:hover,
+  .mobile-overlay a[aria-current="page"] {
+    color: var(--color-accent);
+    background-color: var(--color-bg-elevated);
+  }
 }
 
 /* --- Responsive: 640px ------------------------------------ */
