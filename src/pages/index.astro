@@ -6,13 +6,39 @@ import Hero from "../components/Hero.astro";
 // The member count callout is hidden when below 100.
 const discordMemberCount = 0;
 
-const features = [
+// Featured features: have real art — shown as split image+copy layouts
+const featuredFeatures = [
   {
-    icon: "🗺️",
+    image: {
+      webp: "/images/game/feature-quest.webp",
+      png: "/images/game/feature-quest.png",
+    },
     title: "Explore Six Regions",
     description:
       "From Briarhold's forest paths to the frozen ruins of the Pale Reach — six distinct regions, each with quests, factions, and discovery nodes hidden off the beaten path.",
   },
+  {
+    image: {
+      webp: "/images/game/feature-dragon-evolution.webp",
+      png: "/images/game/feature-dragon-evolution.png",
+    },
+    title: "Watch Your Gear Evolve",
+    description:
+      "From scavenged leather to draigon-forged plate, every equipment upgrade is visible on your character. Progression you can actually see.",
+  },
+  {
+    image: {
+      webp: "/images/game/feature-idle-income.webp",
+      png: "/images/game/feature-idle-income.png",
+    },
+    title: "Play Anywhere",
+    description:
+      "Idle progress while you're away, meaningful decisions when you check in. Short session or long — Draigon Idle works around your schedule.",
+  },
+];
+
+// Grid features: no real art — shown as emoji icon grid cards
+const gridFeatures = [
   {
     icon: "🏕️",
     title: "Build Your Guild",
@@ -31,18 +57,15 @@ const features = [
     description:
       "The ancient draigons shaped the world, then vanished. Their ruins are saturated with residual power — and every one hides a fragment of the truth.",
   },
-  {
-    icon: "🛡️",
-    title: "Watch Your Gear Evolve",
-    description:
-      "From scavenged leather to draigon-forged plate, every equipment upgrade is visible on your character. Progression you can actually see.",
-  },
-  {
-    icon: "📱",
-    title: "Play Anywhere",
-    description:
-      "Idle progress while you're away, meaningful decisions when you check in. Short session or long — Draigon Idle works around your schedule.",
-  },
+];
+
+const screenshots = [
+  { n: "01", alt: "Draigon Idle in-game screenshot 1" },
+  { n: "02", alt: "Draigon Idle in-game screenshot 2" },
+  { n: "03", alt: "Draigon Idle in-game screenshot 3" },
+  { n: "04", alt: "Draigon Idle in-game screenshot 4" },
+  { n: "05", alt: "Draigon Idle in-game screenshot 5" },
+  { n: "06", alt: "Draigon Idle in-game screenshot 6" },
 ];
 ---
 
@@ -61,9 +84,37 @@ const features = [
         there.
       </p>
 
+      <!-- Split layouts for featured features (with real art) -->
+      <ul class="feature-splits" role="list">
+        {
+          featuredFeatures.map(({ image, title, description }, i) => (
+            <li class={`feature-split${i % 2 === 1 ? " feature-split--reverse" : ""}`}>
+              <div class="feature-split-image">
+                <picture>
+                  <source srcset={image.webp} type="image/webp" />
+                  <img
+                    src={image.png}
+                    alt={title}
+                    width="640"
+                    height="480"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </div>
+              <div class="feature-split-copy">
+                <h3 class="feature-title">{title}</h3>
+                <p class="feature-desc">{description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- 3-column grid cards for remaining features -->
       <ul class="features-grid" role="list">
         {
-          features.map(({ icon, title, description }) => (
+          gridFeatures.map(({ icon, title, description }) => (
             <li class="feature-card">
               <div class="feature-icon" aria-hidden="true">
                 {icon}
@@ -76,6 +127,67 @@ const features = [
       </ul>
     </div>
   </section>
+
+  <!-- Screenshot Gallery -->
+  <section class="section screenshots-section" aria-labelledby="screenshots-title">
+    <div class="container">
+      <p class="section-label">In Game</p>
+      <h2 class="section-title" id="screenshots-title">See the World</h2>
+      <div class="screenshot-track" role="list">
+        {
+          screenshots.map(({ n, alt }) => (
+            <div class="screenshot-item" role="listitem">
+              <button
+                class="screenshot-btn"
+                aria-label={`View ${alt} full size`}
+                data-src={`/images/game/screenshot-${n}.png`}
+                data-webp={`/images/game/screenshot-${n}.webp`}
+                data-alt={alt}
+              >
+                <picture>
+                  <source srcset={`/images/game/screenshot-${n}.webp`} type="image/webp" />
+                  <img
+                    src={`/images/game/screenshot-${n}.png`}
+                    alt={alt}
+                    width="320"
+                    height="568"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </button>
+              <noscript>
+                <a
+                  href={`/images/game/screenshot-${n}.png`}
+                  class="screenshot-noscript"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <picture>
+                    <source srcset={`/images/game/screenshot-${n}.webp`} type="image/webp" />
+                    <img
+                      src={`/images/game/screenshot-${n}.png`}
+                      alt={alt}
+                      width="320"
+                      height="568"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                </a>
+              </noscript>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox dialog -->
+  <dialog id="screenshot-lightbox" class="lightbox" aria-label="Screenshot lightbox">
+    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <img id="lightbox-img" src="" alt="" class="lightbox-img" width="320" height="568" />
+  </dialog>
 
   <!-- Wiki -->
   <section class="section wiki-promo" aria-labelledby="wiki-title">
@@ -145,3 +257,50 @@ const features = [
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  // Feature split entrance animations (Intersection Observer)
+  const splitItems = document.querySelectorAll<HTMLElement>(".feature-split");
+  if (splitItems.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    splitItems.forEach((el) => observer.observe(el));
+  }
+
+  // Screenshot lightbox
+  const lightbox = document.getElementById("screenshot-lightbox") as HTMLDialogElement | null;
+  const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement | null;
+
+  if (lightbox && lightboxImg) {
+    // Open on thumbnail click
+    document.querySelectorAll<HTMLButtonElement>(".screenshot-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const webp = btn.dataset.webp ?? "";
+        const src = btn.dataset.src ?? "";
+        const alt = btn.dataset.alt ?? "";
+        lightboxImg.src = webp || src;
+        lightboxImg.alt = alt;
+        lightbox.showModal();
+      });
+    });
+
+    // Close button
+    lightbox.querySelector(".lightbox-close")?.addEventListener("click", () => {
+      lightbox.close();
+    });
+
+    // Close on backdrop click
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) lightbox.close();
+    });
+  }
+</script>
