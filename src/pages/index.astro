@@ -19,8 +19,8 @@ const featuredFeatures = [
   },
   {
     image: {
-      webp: "/images/game/feature-dragon-evolution.webp",
-      png: "/images/game/feature-dragon-evolution.png",
+      webp: "/images/game/feature-idle-income.webp",
+      png: "/images/game/feature-idle-income.png",
     },
     title: "Watch Your Gear Evolve",
     description:
@@ -28,8 +28,8 @@ const featuredFeatures = [
   },
   {
     image: {
-      webp: "/images/game/feature-idle-income.webp",
-      png: "/images/game/feature-idle-income.png",
+      webp: "/images/game/feature-dragon-evolution.webp",
+      png: "/images/game/feature-dragon-evolution.png",
     },
     title: "Play Anywhere",
     description:
@@ -59,14 +59,6 @@ const gridFeatures = [
   },
 ];
 
-const screenshots = [
-  { n: "01", alt: "Draigon Idle in-game screenshot 1" },
-  { n: "02", alt: "Draigon Idle in-game screenshot 2" },
-  { n: "03", alt: "Draigon Idle in-game screenshot 3" },
-  { n: "04", alt: "Draigon Idle in-game screenshot 4" },
-  { n: "05", alt: "Draigon Idle in-game screenshot 5" },
-  { n: "06", alt: "Draigon Idle in-game screenshot 6" },
-];
 ---
 
 <BaseLayout title="Draigon Idle">
@@ -127,67 +119,6 @@ const screenshots = [
       </ul>
     </div>
   </section>
-
-  <!-- Screenshot Gallery -->
-  <section class="section screenshots-section" aria-labelledby="screenshots-title">
-    <div class="container">
-      <p class="section-label">In Game</p>
-      <h2 class="section-title" id="screenshots-title">See the World</h2>
-      <div class="screenshot-track" role="list">
-        {
-          screenshots.map(({ n, alt }) => (
-            <div class="screenshot-item" role="listitem">
-              <button
-                class="screenshot-btn"
-                aria-label={`View ${alt} full size`}
-                data-src={`/images/game/screenshot-${n}.png`}
-                data-webp={`/images/game/screenshot-${n}.webp`}
-                data-alt={alt}
-              >
-                <picture>
-                  <source srcset={`/images/game/screenshot-${n}.webp`} type="image/webp" />
-                  <img
-                    src={`/images/game/screenshot-${n}.png`}
-                    alt={alt}
-                    width="320"
-                    height="568"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </picture>
-              </button>
-              <noscript>
-                <a
-                  href={`/images/game/screenshot-${n}.png`}
-                  class="screenshot-noscript"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <picture>
-                    <source srcset={`/images/game/screenshot-${n}.webp`} type="image/webp" />
-                    <img
-                      src={`/images/game/screenshot-${n}.png`}
-                      alt={alt}
-                      width="320"
-                      height="568"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </picture>
-                </a>
-              </noscript>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- Lightbox dialog -->
-  <dialog id="screenshot-lightbox" class="lightbox" aria-label="Screenshot lightbox">
-    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-    <img id="lightbox-img" src="" alt="" class="lightbox-img" width="320" height="568" />
-  </dialog>
 
   <!-- Wiki -->
   <section class="section wiki-promo" aria-labelledby="wiki-title">
@@ -274,33 +205,5 @@ const screenshots = [
       { threshold: 0.12 }
     );
     splitItems.forEach((el) => observer.observe(el));
-  }
-
-  // Screenshot lightbox
-  const lightbox = document.getElementById("screenshot-lightbox") as HTMLDialogElement | null;
-  const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement | null;
-
-  if (lightbox && lightboxImg) {
-    // Open on thumbnail click
-    document.querySelectorAll<HTMLButtonElement>(".screenshot-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const webp = btn.dataset.webp ?? "";
-        const src = btn.dataset.src ?? "";
-        const alt = btn.dataset.alt ?? "";
-        lightboxImg.src = webp || src;
-        lightboxImg.alt = alt;
-        lightbox.showModal();
-      });
-    });
-
-    // Close button
-    lightbox.querySelector(".lightbox-close")?.addEventListener("click", () => {
-      lightbox.close();
-    });
-
-    // Close on backdrop click
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) lightbox.close();
-    });
   }
 </script>
