@@ -1,56 +1,29 @@
 ---
-// Hero.astro — placeholder treatment (gradient + SVG dragon silhouette)
-// STO-391
-//
-// Real key art swap: when art is ready, set --hero-art on .hero in a
-// page-level <style> or via inline style:
-//   <section class="hero" style="--hero-art: url('/art/hero-key.webp')">
-//
-// The background-image stack is: var(--hero-art, none), then the gradient fallback.
-// When --hero-art resolves to a url(), it renders on top of the gradient.
+// Hero.astro — STO-415
+// Real key art swapped in. SVG silhouette replaced with <picture>.
 ---
 
 <section class="hero" aria-labelledby="hero-title">
 
-  <!-- Layer 1: SVG dragon silhouette (mid-layer, z-index 1) -->
-  <div class="hero-silhouette" aria-hidden="true">
-    <svg
-      viewBox="0 0 800 600"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
+  <!-- Layer 1: Key art photo (z-index 1) -->
+  <picture class="hero-art" aria-hidden="true">
+    <source
+      srcset="/images/game/hero-key-art-768.webp 768w, /images/game/hero-key-art-1280.webp 1280w, /images/game/hero-key-art.webp 1920w"
+      sizes="100vw"
+      type="image/webp"
+    />
+    <source
+      srcset="/images/game/hero-key-art-768.png 768w, /images/game/hero-key-art-1280.png 1280w, /images/game/hero-key-art.png 1920w"
+      sizes="100vw"
+    />
+    <img
+      src="/images/game/hero-key-art-1280.png"
+      alt=""
       aria-hidden="true"
-      focusable="false"
-    >
-      <!-- Body -->
-      <path d="M310 295 C345 270,415 268,462 290 C508 312,518 346,498 368 C478 390,428 392,382 378 C336 364,292 330,310 295Z"/>
-      <!-- Neck -->
-      <path d="M332 298 C308 272,278 240,262 215 C246 190,250 172,266 180 C278 186,295 210,315 245 C330 272,340 292,334 300Z"/>
-      <!-- Head -->
-      <path d="M260 182 C238 174,212 168,198 178 C184 188,188 205,206 212 C224 218,252 212,264 196 C274 182,272 174,260 182Z"/>
-      <!-- Snout -->
-      <path d="M202 180 C180 172,162 168,154 178 C146 188,158 200,176 200 C194 200,204 190,202 180Z"/>
-      <!-- Horn 1 -->
-      <path d="M212 168 L205 135 L222 162Z"/>
-      <!-- Horn 2 -->
-      <path d="M232 162 L228 128 L244 156Z"/>
-      <!-- Left wing (bat-wing with three membrane fingers) -->
-      <path d="M328 298 L78 72 L128 168 L72 195 L138 215 L172 262 L138 282 L218 280 L295 294Z"/>
-      <!-- Right wing (mirror) -->
-      <path d="M448 298 L718 72 L668 168 L724 195 L658 215 L624 262 L658 282 L578 280 L501 294Z"/>
-      <!-- Tail -->
-      <path d="M492 362 C538 372,578 360,618 376 C650 390,658 412,635 420 C612 428,586 408,558 396 C530 384,504 372,492 370Z"/>
-      <!-- Tail arrowhead -->
-      <path d="M632 414 L672 396 L654 424Z"/>
-      <!-- Front leg -->
-      <path d="M352 368 L335 420 L347 422 L368 368Z"/>
-      <path d="M335 418 L318 440 L346 426Z"/>
-      <path d="M346 421 L330 444 L355 428Z"/>
-      <!-- Back leg -->
-      <path d="M445 380 L430 428 L442 430 L460 380Z"/>
-      <path d="M430 426 L414 448 L440 434Z"/>
-      <path d="M441 429 L426 450 L450 436Z"/>
-    </svg>
-  </div>
+      fetchpriority="high"
+      decoding="async"
+    />
+  </picture>
 
   <!-- Layer 2: Vignette overlay (z-index 2) -->
   <div class="hero-vignette" aria-hidden="true"></div>
@@ -116,9 +89,8 @@
 
 <style>
   /* ============================================================
-     Hero — placeholder treatment
+     Hero — key art treatment (STO-415)
      All hero styles scoped to this component.
-     Art swap: set --hero-art on .hero when real key art is ready.
      ============================================================ */
 
   .hero {
@@ -129,12 +101,7 @@
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    /*
-      Art-swap slot.
-      Real key art: --hero-art: url('/art/hero-key.webp')
-      Falls back to gradient when unset.
-    */
-    background-image: var(--hero-art, none),
+    background-image:
       radial-gradient(
         ellipse 90% 65% at 58% 35%,
         rgba(124, 58, 237, 0.35) 0%,
@@ -147,9 +114,9 @@
         transparent 58%
       );
     background-color: var(--color-bg);
-    background-size: cover, auto, auto;
-    background-position: center, center, center;
-    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: auto, auto;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
   }
 
   /* Ambient glow — pulsing pseudo-element at z-index 0 */
@@ -183,24 +150,19 @@
     }
   }
 
-  /* Dragon silhouette — z-index 1 */
-  .hero-silhouette {
+  /* Key art photo — z-index 1 */
+  .hero-art {
     position: absolute;
     inset: 0;
     z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
     pointer-events: none;
-    overflow: hidden;
   }
 
-  .hero-silhouette svg {
-    width: clamp(280px, 52vw, 700px);
-    height: auto;
-    color: rgba(124, 58, 237, 0.13);
-    transform: translateX(14%) translateY(4%);
-    flex-shrink: 0;
+  .hero-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
 
   /* Vignette overlay — z-index 2 */
