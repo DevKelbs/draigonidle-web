@@ -1,5 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const screenshots = [
+  { src: "/images/game/screenshot-01", label: "screenshot-01" },
+  { src: "/images/game/screenshot-02", label: "screenshot-02" },
+  { src: "/images/game/screenshot-03", label: "screenshot-03" },
+  { src: "/images/game/screenshot-04", label: "screenshot-04" },
+  { src: "/images/game/screenshot-05", label: "screenshot-05" },
+  { src: "/images/game/screenshot-06", label: "screenshot-06" },
+];
 ---
 
 <BaseLayout
@@ -72,45 +81,49 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Press assets including logos, screenshots, and promotional art will
             be available at launch.
           </p>
-          <button class="btn btn-outline" disabled>
-            Download Press Kit (Coming Soon)
-          </button>
+          <a
+            href="/downloads/draigon-idle-press-kit.zip"
+            class="btn btn-outline"
+            download
+          >
+            Download Press Kit
+          </a>
         </div>
 
-        <!-- Screenshots Placeholder -->
+        <!-- Screenshots -->
         <div class="press-card" style="grid-column: 1 / -1;">
           <h2>Screenshots</h2>
           <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);">
-            Screenshots will be posted here as the game approaches launch.
+            Click any screenshot to download the full-resolution PNG.
           </p>
-          <div
-            style="
-              display: grid;
-              grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-              gap: var(--space-4);
-            "
-            aria-label="Screenshot gallery placeholder"
-          >
-            {
-              Array.from({ length: 4 }).map((_, i) => (
-                <div
-                  style="
-                    aspect-ratio: 9/16;
-                    background-color: var(--color-bg-elevated);
-                    border: 1px dashed var(--color-border);
-                    border-radius: var(--radius-md);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: var(--color-text-muted);
-                    font-size: var(--text-xs);
-                  "
-                  aria-label={`Screenshot placeholder ${i + 1}`}
-                >
-                  Screenshot {i + 1}
+          <div class="press-screenshots-grid" aria-label="Game screenshots">
+            {screenshots.map(({ src, label }) => (
+              <div class="press-screenshot">
+                <picture>
+                  <source srcset={`${src}.webp`} type="image/webp" />
+                  <img
+                    src={`${src}.png`}
+                    alt={`Draigon Idle — ${label}`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+                <div class="press-screenshot-hover" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  <span>{label}.png</span>
                 </div>
-              ))
-            }
+                <a
+                  href={`${src}.png`}
+                  download={`${label}.png`}
+                  class="press-screenshot-dl"
+                  aria-label={`Download ${label}`}
+                ></a>
+              </div>
+            ))}
           </div>
         </div>
       </div>
