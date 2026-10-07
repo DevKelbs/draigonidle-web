@@ -44,12 +44,13 @@ const features = [
     text: "Build your boat up stage by stage. Send her on voyages, run cargo to market, and cross the water to a new camp at Saltmire.",
   },
   {
-    art: "/images/art-song.png",
-    w: 120,
-    h: 40,
-    alt: "A drum, a flute and a lute.",
-    title: "A song by the fire",
-    text: "Play the camp's work song on drum, flute or lute. It's a short rhythm game, and a good run hurries everyone's work along.",
+    art: "/images/art-camp.png",
+    w: 135,
+    h: 33,
+    scale: 3,
+    alt: "A market cart, a campfire, a small grey cat and a chicken.",
+    title: "A camp with a life of its own",
+    text: "Market carts roll in. A cat adopts your best mage. Now and then an angry chicken runs through camp. Catch it for a few coins.",
   },
 ];
 
@@ -116,7 +117,7 @@ const shots = [
                   alt={f.alt}
                   width={f.w}
                   height={f.h}
-                  style={`--w:${f.w}`}
+                  style={`--w:${(f.w * (f.scale ?? 2)) / 2}`}
                   loading="lazy"
                 />
               </div>
