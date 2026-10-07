@@ -5,7 +5,7 @@ export const site = {
   name: "Draigon Idle",
   tagline: "Run a guild. Raise a dragon. Play the raids yourself.",
   description:
-    "Draigon Idle is an idle guild game for iPhone. Your guild gathers, crafts and sails while you're away. You gear them up, raise four dragons and play the raids yourself.",
+    "Draigon Idle is an idle guild game for iPhone. Your guild gathers, crafts and sails while you're away. You gear them up, raise dragons and play the raids yourself.",
   url: "https://draigonidle.com",
 
   // Who makes it.

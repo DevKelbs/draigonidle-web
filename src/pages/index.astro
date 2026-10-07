@@ -7,25 +7,25 @@ const features = [
     art: "/images/art-guild.png",
     w: 176,
     h: 40,
-    alt: "Five guild members in work clothes: a woodcutter, a miner, a cook, a smith and an angler.",
+    alt: "Guild members in work clothes: a woodcutter, a miner, a cook, a smith and an angler.",
     title: "A guild that keeps working",
-    text: "Hire a crew and put them on jobs. They chop, mine, fish, smith, cook and weave for up to 12 hours while the game is closed. Checking in takes a few taps.",
+    text: "Hire a crew and put them on jobs. They chop, mine, fish, smith, cook and weave for hours while the game is closed. Checking in takes a few taps.",
   },
   {
     art: "/images/art-gear.png",
     w: 176,
     h: 40,
-    alt: "The same fighter in five sets of armour, from scrap to tidesteel.",
+    alt: "The same fighter in better and better armour, starting from scrap.",
     title: "Gear you can see",
-    text: "Five tiers of arms and armour from scrap to tidesteel, plus kits for sailors, archers and mages. Everything a member wears is drawn on them.",
+    text: "Tier after tier of arms and armour, starting from scrap, plus kits for sailors, archers and mages. Everything a member wears is drawn on them.",
   },
   {
     art: "/images/art-dragons.png",
     w: 208,
     h: 40,
-    alt: "Four small dragons: teal, moss green, coal black and gold.",
-    title: "Four dragons to raise",
-    text: "A young draigon circles your camp from the first day. Feed it and it stays. Three more hatch from eggs you find or buy, and each one helps the guild in its own way.",
+    alt: "A small teal dragon, and the dark outlines of others not yet met.",
+    title: "Dragons to raise",
+    text: "A young draigon circles your camp from the first day. Feed it and it stays. It isn't the only one. The others are for you to find.",
   },
   {
     art: "/images/art-raids.png",
@@ -33,7 +33,7 @@ const features = [
     h: 52,
     alt: "A fighter, an archer and a mage facing a wolf and a stone guardian.",
     title: "Raids you play yourself",
-    text: "Go back to places you've beaten and fight them by hand. Time a heavy blow, draw a bow, trace a rune, parry the big hits. Four raids so far, one of them on your ship's deck.",
+    text: "Go back to places you've beaten and fight them by hand. Time a heavy blow, draw a bow, trace a rune, parry the big hits. Some are fought on your ship's deck.",
   },
   {
     art: "/images/art-ships.png",
@@ -41,7 +41,7 @@ const features = [
     h: 84,
     alt: "A raft, a sloop and a galleon.",
     title: "From a raft to a galleon",
-    text: "Build your boat up through ten stages. Send her on voyages, run cargo to market, and cross the water to a second camp at Saltmire.",
+    text: "Build your boat up stage by stage. Send her on voyages, run cargo to market, and cross the water to a new camp at Saltmire.",
   },
   {
     art: "/images/art-song.png",
@@ -129,11 +129,15 @@ const shots = [
 
       <div class="panel skills">
         <img class="pixel" src="/images/art-skills.png" alt="" width="196" height="20" loading="lazy" />
-        <h3>Ten skills</h3>
+        <h3>Skills to train</h3>
         <ul class="chips" role="list">
           {skills.map((s) => <li>{s}</li>)}
         </ul>
       </div>
+
+      <p class="growing">
+        The game is still growing. More places, raids and dragons are on the way.
+      </p>
     </div>
   </section>
 
@@ -187,8 +191,8 @@ const shots = [
         <p class="eyebrow">Price</p>
         <h2 id="price-title">Free to start. One purchase for the rest.</h2>
         <p class="lead">
-          All of Briarhold is free: the camp, three land raids, the first five
-          boats and the sea raid at Smugglers' Cove. That's about a week of play.
+          All of Briarhold is free: the camp, its raids, the first boats and a
+          fight at sea. That's days of play before you pay anything.
         </p>
         <p class="lead">
           One purchase of {site.price} opens the Saltmire Coast. There are no ads and
@@ -199,10 +203,10 @@ const shots = [
         <p class="price-tag">{site.price}<span>once</span></p>
         <h3>The Saltmire Coast</h3>
         <ul class="ticks" role="list">
-          <li>Saltmire: a second camp to build, across the water</li>
-          <li>Five bigger ships, up to the Galleon</li>
+          <li>Saltmire: a new camp to build, across the water</li>
+          <li>Bigger ships, up to the Galleon</li>
           <li>The Blue Lamp: the story goes on</li>
-          <li>Nine more places to sail and fight</li>
+          <li>More places to sail and fight</li>
         </ul>
         <p class="fine">Price in US dollars. It varies by country.</p>
       </div>

@@ -907,3 +907,12 @@ ul {
     transition: none;
   }
 }
+
+/* A line under the features: there's more to come. */
+.growing {
+  margin: 28px 0 0;
+  text-align: center;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  color: var(--gold);
+}
