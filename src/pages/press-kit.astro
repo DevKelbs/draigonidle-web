@@ -1,124 +1,153 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Contact from "../components/Contact.astro";
+import { site, skills } from "../data/site";
 
-const screenshots = [
-  { src: "/images/game/screenshot-01", label: "screenshot-01" },
-  { src: "/images/game/screenshot-02", label: "screenshot-02" },
-  { src: "/images/game/screenshot-03", label: "screenshot-03" },
-  { src: "/images/game/screenshot-04", label: "screenshot-04" },
-  { src: "/images/game/screenshot-05", label: "screenshot-05" },
-  { src: "/images/game/screenshot-06", label: "screenshot-06" },
+const facts = [
+  ["Title", site.name],
+  ["Developer", `${site.person}, publishing as ${site.studio}`],
+  ["Genre", "Idle guild RPG"],
+  ["Platform", "iPhone (iOS 15 or later)"],
+  ["Status", site.appStoreUrl ? "Out now" : site.status],
+  ["Price", `Free to start. One purchase of ${site.price} for the full game.`],
+  ["Ads", "None"],
+  ["Online", "Not needed. Saves stay on the device."],
+  ["Language", "English"],
+];
+
+const shots = [
+  ["shot-camp-plain", "The camp"],
+  ["shot-camp", "Build your guild"],
+  ["shot-dragon", "The draigon"],
+  ["shot-map", "The map"],
+  ["shot-raid", "A raid"],
+  ["shot-den", "The Wolf Den"],
+  ["shot-ruin", "The Ruin"],
+  ["shot-watch", "The dragon's watch"],
+  ["shot-back", "Home again"],
+  ["shot-grow", "The guild grows"],
 ];
 ---
 
 <BaseLayout
   title="Press Kit"
-  description="Official press kit for Draigon Idle — screenshots, key facts, and media assets for journalists and content creators."
+  description="Facts, a description, images and the trailer for anyone writing about or covering Draigon Idle."
 >
-  <section class="section" aria-labelledby="press-title">
+  <section class="page-head">
     <div class="container">
-      <p class="section-label">Media Resources</p>
-      <h1 class="section-title" id="press-title">Press Kit</h1>
-      <p class="section-body">
-        Welcome, press and content creators. Everything you need to cover
-        Draigon Idle is here — facts, branding guidelines, and screenshots.
-        For inquiries, contact us at
-        <a href="mailto:press@stonemillstudios.com">press@stonemillstudios.com</a>.
+      <h1>Press Kit</h1>
+      <p>
+        Facts, words and pictures for anyone covering {site.name}. Use any of it
+        freely. For anything else, reach us at <Contact />.
       </p>
+    </div>
+  </section>
 
+  <section class="page-body">
+    <div class="container">
       <div class="press-grid">
-        <!-- Key Facts -->
-        <div class="press-card">
-          <h2>Key Facts</h2>
-          <dl>
-            <dt>Title</dt>
-            <dd>Draigon Idle</dd>
-
-            <dt>Developer</dt>
-            <dd>Stonemill Studios</dd>
-
-            <dt>Genre</dt>
-            <dd>Narrative Idle Adventure RPG</dd>
-
-            <dt>Platforms</dt>
-            <dd>iOS, Android</dd>
-
-            <dt>Status</dt>
-            <dd>In Development</dd>
-
-            <dt>Price</dt>
-            <dd>Free to Play</dd>
-
-            <dt>Languages</dt>
-            <dd>English (more coming)</dd>
+        <div class="panel">
+          <h2>Facts</h2>
+          <dl class="facts">
+            {
+              facts.map(([k, v]) => (
+                <>
+                  <dt>{k}</dt>
+                  <dd>{v}</dd>
+                </>
+              ))
+            }
           </dl>
         </div>
 
-        <!-- Description -->
-        <div class="press-card">
-          <h2>About the Game</h2>
-          <p style="font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-normal); margin-bottom: var(--space-4);">
-            Draigon Idle is a narrative idle RPG set in The Draigonlands — a
-            post-golden-age continent shaped by the departure of the draigons,
-            ancient architect beings whose absence left ruins saturated with
-            residual power. You play as a wandering adventurer and guild leader:
-            building outposts across six distinct regions, running quest chains,
-            and sending recruited companions on expeditions while you're away.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-normal);">
-            Progression is driven by quests, exploration, and discovery — not
-            mindless clicking. Each region has its own visual identity, faction
-            politics, and gameplay flavor. The world moves forward while you're
-            offline; the decisions you make when you return are what shape your
-            story.
+        <div class="panel">
+          <h2>In one line</h2>
+          <p>{site.tagline}</p>
+          <h2>In a paragraph</h2>
+          <p>
+            {site.name} is an idle guild game for iPhone. You lead a small guild in
+            Briarhold. Its members gather, craft and go out on expeditions while the
+            game is closed, for up to 12 hours at a time. When you check in you collect
+            what they found, gear them up and send them further: down the Old Mine,
+            into the Wolf Den, out to sea on a boat that grows from a raft to a
+            galleon. Along the way you raise four dragons, and four of the places you've
+            beaten can be fought again by hand as raids.
           </p>
         </div>
+      </div>
 
-        <!-- Download Assets -->
-        <div class="press-card">
-          <h2>Assets</h2>
-          <p style="font-size: var(--text-sm); color: var(--color-text-muted);">
-            Press assets including logos, screenshots, and promotional art will
-            be available at launch.
-          </p>
-        </div>
+      <div class="panel" style="margin-bottom: 22px;">
+        <h2>What's in it</h2>
+        <ul class="ticks" role="list">
+          <li>Ten skills: {skills.join(", ")}.</li>
+          <li>Eighteen places to send a party, by land and by sea, across two camps.</li>
+          <li>Four raids played by hand, with timed blows, drawn bows, traced runes and parries.</li>
+          <li>Four dragons to feed and win over, each with five stages of trust.</li>
+          <li>Ten ships, from the Raft to the Galleon.</li>
+          <li>Five tiers of gear from scrap to tidesteel, plus sea, archery and magic kits, all drawn on the wearer.</li>
+          <li>A rhythm game by the fire, played on drum, flute or lute.</li>
+          <li>No ads, no energy, no timers to pay past, no account.</li>
+        </ul>
+      </div>
 
-        <!-- Screenshots -->
-        <div class="press-card" style="grid-column: 1 / -1;">
-          <h2>Screenshots</h2>
-          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);">
-            Click any screenshot to download the full-resolution PNG.
-          </p>
-          <div class="press-screenshots-grid" aria-label="Game screenshots">
-            {screenshots.map(({ src, label }) => (
-              <div class="press-screenshot">
-                <picture>
-                  <source srcset={`${src}.webp`} type="image/webp" />
-                  <img
-                    src={`${src}.png`}
-                    alt={`Draigon Idle — ${label}`}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </picture>
-                <div class="press-screenshot-hover" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                  </svg>
-                  <span>{label}.png</span>
-                </div>
-                <a
-                  href={`${src}.png`}
-                  download={`${label}.png`}
-                  class="press-screenshot-dl"
-                  aria-label={`Download ${label}`}
-                ></a>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div class="panel" style="margin-bottom: 22px;">
+        <h2>Price</h2>
+        <p>
+          The game is free through all of Briarhold, which is about a week of play:
+          the camp, three land raids, the first five boats and a sea raid. One
+          purchase of {site.price} opens the Saltmire Coast, with a second camp, five
+          bigger ships, nine more places and the rest of the story. There is nothing
+          else to buy.
+        </p>
+      </div>
+
+      <div class="panel" style="margin-bottom: 22px;">
+        <h2>Trailer</h2>
+        <p>
+          30 seconds, vertical, 720 by 1280.
+          <a href="/video/draigon-idle-trailer.mp4" download>Download the MP4</a>
+        </p>
+      </div>
+
+      <div class="panel" style="margin-bottom: 22px;">
+        <h2>Icon and key art</h2>
+        <ul class="downloads" role="list">
+          <li>
+            <a href="/images/app-icon.png" download>
+              <img class="pixel contain" src="/images/app-icon.png" alt="The app icon: a red dragon's head." width="256" height="256" style="aspect-ratio: 1;" loading="lazy" />
+              App icon (PNG)
+            </a>
+          </li>
+          <li>
+            <a href="/images/hero-night.png" download>
+              <img class="pixel wide" src="/images/hero-night.png" alt="The camp at night." width="480" height="210" loading="lazy" />
+              Camp at night (PNG, pixel size)
+            </a>
+          </li>
+          <li>
+            <a href="/og-default.png" download>
+              <img class="wide" src="/og-default.png" alt="The title card." width="1200" height="630" loading="lazy" />
+              Title card (PNG, 1200 by 630)
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Scenes from the trailers</h2>
+        <p class="fine" style="margin-bottom: 16px;">Vertical, 540 by 960. Select one to download it.</p>
+        <ul class="downloads" role="list">
+          {
+            shots.map(([file, label]) => (
+              <li>
+                <a href={`/images/${file}.webp`} download>
+                  <img src={`/images/${file}.webp`} alt={label} width="540" height="960" loading="lazy" />
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   </section>

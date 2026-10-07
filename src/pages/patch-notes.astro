@@ -1,405 +1,110 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
 
-type ChangeItem = string | { section: string };
-
-const patches: {
-  version: string;
-  date: string;
-  title: string;
-  type?: "devlog" | "patch";
-  intro?: string;
-  changes: ChangeItem[];
-}[] = [
+// Newest first. Each release: version, date, a line about it, and
+// headed lists of what changed.
+const releases = [
   {
-    version: "0.3.0",
-    date: "2026-03-28",
-    type: "devlog",
-    title: "Two Regions. One Very Stressful Month.",
-    intro:
-      "The forest showed up first. It had opinions. Then the mountain showed up and had more opinions, mostly about mithril and who gets to touch it. Both regions are now open. Everyone survived.",
-    changes: [
-      { section: "Ashenveil Woods" },
-      "Ashenveil is fully built: Dozens of quests across the region — main story, side content, and faction work, a full cast of NPCs, multiple discovery nodes, 3 expedition destinations (Grove Patrol, Deep Forest, Draigon Ruins), and 6 outpost buildings (Canopy Hall, Herbalist Shop, Enchanting Altar, Druid Sanctum, Scouts Post, Sanctuary). The forest has layers. You'll find most of them.",
-      "The Verdant Circle arrive as a faction — druidic recluses who've been watching the draigons longer than anyone. Completing their faction quests unlocks deeper Herbalism mastery and enchanting. Getting in good with them pays off.",
-      "Enchanting is live, and it belongs to Ashenveil. The Verdant Circle unlocks it. Multiple enchantment tiers, from basic enhancements to elite-tier upgrades. One enchantment slot per gear piece. Enchanted gear gets a purple glow and a ✦ badge on bank tiles. Applying a new enchantment over an old one destroys the old one — no refund.",
-      "Every outpost, enemy, and discovery node in Ashenveil has its own illustrated look.",
-      { section: "Iron Hollows" },
-      "Iron Hollows is open: Dozens of quests across the region — main story, side content, and faction work, a full cast of NPCs, multiple discovery nodes, 3 expedition destinations (Deep Seam CP 28, Ancient Forge CP 42, Draigon Shaft CP 55), and 6 outpost buildings (Consortium Hall, Deep Forge, Miners Hall, Ore Depot, Shaft Entrance, Smeltery). The Ironbound Consortium runs the place. They have opinions about mithril.",
-      "The boss encounter system is live — three bosses across both regions, each with multi-phase encounters, scripted specials, and a warning banner before each special attack. All three respawn on a weekly cooldown. Prepare accordingly.",
-      "Ashenveil Warden (Ashenveil: Draigon Ruins) — Has a distinct weakness. Recommended CP 40+. First-kill unique reward.",
-      "Iron Forge Colossus (Iron Hollows: Ancient Forge) — Has a distinct weakness. Recommended CP 48+. First-kill unique reward.",
-      "Draigon Guardian (Iron Hollows: Draigon Shaft) — Has a distinct weakness. Recommended CP 55+. First-kill unique reward.",
-      "Leaderboards shipped: 4 categories (total level, quest points, Collection Log completion, expedition count). Top 100 per category, friends-only filter, opt-in default. The competitive players know who they are.",
-      "Both regions are fully illustrated — every outpost, enemy, and discovery node has its own look.",
-    ],
-  },
-  {
-    version: "0.2.0",
-    date: "2026-03-27",
-    type: "devlog",
-    title: "The World Gets a Face",
-    intro:
-      "Everything that was a placeholder is now real. The buildings look like buildings. Your companions walk places. The Saltmire Coast has weather, in the metaphorical sense.",
-    changes: [
-      "Full Saltmire Coast art pass shipped: enemies, discovery markers, outpost buildings, and combat terrain all fully illustrated. The coast looks like a place you'd want to explore — and also a place you'd drown without the right gear.",
-      "Outpost building upgrades are now visible — each building has distinct art across its levels and upgrade branches. Your storehouse at level 5 looks nothing like it did at level 1.",
-      "Companion walk sprites added for Sable and Thurman. They move through the minimap now instead of teleporting. Small thing. It matters.",
-      "Friends list and character inspect shipped: DRGN-XXXX friend codes, search by name or code, full gear/skills/Collection Log preview on any friend's profile. The social layer is in.",
-      "Audio expansion complete: all 6 regions have 4 ambient tracks each. 28 total music files including the Draigon Ruin audio layer (fades in when you enter ruins, fades out when you leave). The quiet moments are no longer silent.",
-    ],
-  },
-  {
-    version: "0.1.0",
-    date: "2026-03-20",
-    type: "devlog",
-    title: "The Foundations Are Laid",
-    intro:
-      "The Hearthfire Inn is open. The world is built. The quest board has actual quests on it. We shipped Phase 1.",
-    changes: [
-      "Character creation is live — 4 races (Human, Elven, Draigonkin, Dwarven), dozens of portraits, 9 racial bonuses that actually affect gameplay. Your race shows up on the home screen, in skill tooltips, and in the expedition setup. You feel it.",
-      "Briarhold and Saltmire Coast are fully implemented: 25 quests with a prerequisite unlock tree, narrative dialogue, item turn-ins, and quest points. Everything gates on story, not just levels.",
-      "All 16 skills are scaffolded with resource nodes, XP tables, and milestone unlocks. We front-loaded this work so future regions just need content, not engine changes.",
-      "The expedition system is live: 6 destinations across 2 regions, active play (focus tapping, Critical Spark, Gathering Surge, crossroads decisions, battle encounters), provisions, combat style triangle.",
-      "The bank is open. 100 slots to start, expandable past 500. Collection Log tracking every item you've ever touched. Bank value counter because we know you're going to flex it.",
-      "Cloud saves are live. Your progress follows you across devices — no account required.",
-      "The foundation is solid. Future regions slot in without engine changes.",
+    version: "0.9.0",
+    date: "2026-10-06",
+    label: "Beta, on TestFlight",
+    summary:
+      "The first build in testers' hands. It's the whole game as it will launch, so this list is everything that's in it.",
+    groups: [
+      {
+        title: "The guild",
+        items: [
+          "Hire a crew and set them to ten skills: Woodcutting, Mining, Fishing, Smithing, Cooking, Tailoring, Combat, Archery, Magic and Sailing.",
+          "They keep working for up to 12 hours while the game is closed.",
+          "Five tiers of arms and armour from scrap to tidesteel, with kits for sailors, archers and mages. All of it shows on whoever wears it.",
+          "A guild hall to build up through ten levels, with perks to choose along four branches.",
+        ],
+      },
+      {
+        title: "Out in the world",
+        items: [
+          "Eighteen places to send a party, by land and by sea.",
+          "Four raids to play by hand: the Old Mine, the Wolf Den, the Ruin and Smugglers' Cove.",
+          "Ten ships, from the Raft to the Galleon, for voyages and trade runs.",
+          "A second camp across the water at Saltmire.",
+          "Watch a party on the road through the dragon's eyes and clear its way.",
+        ],
+      },
+      {
+        title: "Dragons",
+        items: [
+          "Four to raise: the Draigon, the Moss Drake, the Cinder Drake and the Gilt Drake.",
+          "Each has five stages of trust and helps the guild in its own way.",
+        ],
+      },
+      {
+        title: "Life at camp",
+        items: [
+          "The work song: a rhythm game by the fire, played on drum, flute or lute.",
+          "Camp spells to trace, three market carts, deeds to earn and a collection log.",
+          "An angry chicken.",
+        ],
+      },
+      {
+        title: "Price",
+        items: [
+          `Free up to the crossing to Saltmire. One purchase (${site.price}) opens the rest. No ads.`,
+        ],
+      },
     ],
   },
 ];
 
-const latest = patches[0];
-const older = patches.slice(1);
+const fmt = (iso: string) =>
+  new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
 ---
 
 <BaseLayout
   title="Patch Notes"
-  description="Draigon Idle patch notes — follow every update, fix, and new feature as the game evolves."
+  description="What's new in Draigon Idle, version by version."
 >
-  <section class="section" aria-labelledby="patch-title">
+  <section class="page-head">
     <div class="container">
-      <p class="section-label">Development Updates</p>
-      <h1 class="section-title" id="patch-title">Patch Notes</h1>
-      <p class="section-body">
-        Track every update to Draigon Idle — new features, balance changes, and
-        bug fixes. The game is actively in development; expect frequent updates.
+      <h1>Patch Notes</h1>
+      <p>What's new, version by version.</p>
+    </div>
+  </section>
+
+  <section class="page-body">
+    <div class="container prose">
+      {
+        releases.map((r) => (
+          <article class="panel release" id={`v${r.version}`}>
+            <div class="release-head">
+              <h2>Version {r.version}</h2>
+              <time datetime={r.date}>{fmt(r.date)}</time>
+              <span>{r.label}</span>
+            </div>
+            <p>{r.summary}</p>
+            {r.groups.map((g) => (
+              <>
+                <h3>{g.title}</h3>
+                <ul>
+                  {g.items.map((i) => (
+                    <li>{i}</li>
+                  ))}
+                </ul>
+              </>
+            ))}
+          </article>
+        ))
+      }
+
+      <p class="fine">
+        Notes for versions 0.1 to 0.3 described an earlier form of the game. It was
+        rebuilt from the ground up, and those notes no longer apply.
       </p>
     </div>
   </section>
-
-  <section class="section patch-section" aria-label="Version history">
-    <div class="container patch-layout">
-
-      <!-- Sticky TOC sidebar (desktop only) -->
-      <aside class="patch-toc" aria-label="Version navigation">
-        <p class="toc-heading">Versions</p>
-        <nav>
-          <ul>
-            {patches.map(({ version }) => (
-              <li>
-                <a href={`#v${version}`} class="toc-link">{version}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </aside>
-
-      <!-- Timeline -->
-      <ol class="patch-timeline" reversed aria-label="Patch timeline">
-
-        <!-- Latest entry — always expanded -->
-        <li class="timeline-entry" id={`v${latest.version}`}>
-          <div class="timeline-node" aria-hidden="true">
-            <span class="node-badge">{latest.version}</span>
-          </div>
-          <div class="patch-card patch-card--latest">
-            <header class="patch-card-header">
-              <time class="patch-date" datetime={latest.date}>{latest.date}</time>
-              <span class="patch-title-text">— {latest.title}</span>
-            </header>
-            {latest.intro && (
-              <blockquote class="patch-intro">{latest.intro}</blockquote>
-            )}
-            <ul class="patch-changes" style="list-style: disc; padding-left: var(--space-6);">
-              {latest.changes.map((item) =>
-                typeof item === "string" ? (
-                  <li style="margin-bottom: var(--space-1);">{item}</li>
-                ) : (
-                  <li class="patch-section-heading">{item.section}</li>
-                )
-              )}
-            </ul>
-          </div>
-        </li>
-
-        <!-- Older entries — collapsible -->
-        {older.map(({ version, date, title, type, intro, changes }) => (
-          <li class="timeline-entry" id={`v${version}`}>
-            <div class="timeline-node" aria-hidden="true">
-              <span class="node-badge node-badge--older">{version}</span>
-            </div>
-            <div class="patch-card">
-              <details>
-                <summary class="patch-summary">
-                  <header class="patch-card-header">
-                    <time class="patch-date" datetime={date !== "Coming Soon" ? date : undefined}>{date}</time>
-                    <span class="patch-title-text">— {title}</span>
-                  </header>
-                </summary>
-                <div class="patch-details-body">
-                  {intro && (
-                    <blockquote class="patch-intro">{intro}</blockquote>
-                  )}
-                  <ul class="patch-changes" style="list-style: disc; padding-left: var(--space-6);">
-                    {changes.map((item) =>
-                      typeof item === "string" ? (
-                        <li style="margin-bottom: var(--space-1);">{item}</li>
-                      ) : (
-                        <li class="patch-section-heading">{item.section}</li>
-                      )
-                    )}
-                  </ul>
-                </div>
-              </details>
-            </div>
-          </li>
-        ))}
-
-      </ol>
-    </div>
-  </section>
 </BaseLayout>
-
-<style>
-  /* ---- Layout -------------------------------------------- */
-  .patch-section {
-    padding-top: 0;
-  }
-
-  .patch-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
-
-  /* ---- TOC sidebar --------------------------------------- */
-  .patch-toc {
-    display: none;
-  }
-
-  .toc-heading {
-    font-family: var(--font-display);
-    font-size: var(--text-xs);
-    font-weight: var(--weight-bold);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: var(--space-3);
-  }
-
-  .patch-toc nav ul {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .toc-link {
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    letter-spacing: 0.06em;
-    color: var(--color-text-muted);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-  }
-
-  .toc-link:hover {
-    color: var(--color-accent);
-  }
-
-  /* ---- Timeline ------------------------------------------ */
-  .patch-timeline {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-8);
-    padding-left: var(--space-10);
-  }
-
-  /* Vertical line */
-  .patch-timeline::before {
-    content: "";
-    position: absolute;
-    left: calc(var(--space-3) - 1px);
-    top: var(--space-4);
-    bottom: var(--space-4);
-    width: 2px;
-    background: linear-gradient(
-      to bottom,
-      var(--color-accent) 0%,
-      var(--color-accent-dim) 40%,
-      var(--color-border) 100%
-    );
-  }
-
-  /* ---- Timeline node ------------------------------------- */
-  .timeline-entry {
-    position: relative;
-  }
-
-  .timeline-node {
-    position: absolute;
-    left: calc(-1 * var(--space-10));
-    top: var(--space-4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--space-6);
-    height: var(--space-6);
-  }
-
-  .node-badge {
-    font-family: var(--font-display);
-    font-size: 0.6rem;
-    font-weight: var(--weight-bold);
-    letter-spacing: 0.06em;
-    color: var(--color-bg);
-    background-color: var(--color-accent);
-    border-radius: 999px;
-    padding: 2px 6px;
-    white-space: nowrap;
-    line-height: 1.4;
-  }
-
-  .node-badge--older {
-    background-color: var(--color-accent-dim);
-  }
-
-  /* ---- Patch cards --------------------------------------- */
-  .patch-card {
-    position: relative;
-    background-color: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-6);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-  }
-
-  .patch-card--latest {
-    border-color: var(--color-accent-dim);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(200, 168, 75, 0.08);
-  }
-
-  /* Grain overlay */
-  .patch-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-    background-repeat: repeat;
-    opacity: 0.03;
-    mix-blend-mode: overlay;
-  }
-
-  /* ---- Card header --------------------------------------- */
-  .patch-card-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-3);
-    margin-bottom: var(--space-4);
-  }
-
-  .patch-date {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-  }
-
-  .patch-title-text {
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    letter-spacing: 0.04em;
-    color: var(--color-text-muted);
-  }
-
-  /* ---- Collapsible details ------------------------------- */
-  .patch-summary {
-    list-style: none;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .patch-summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .patch-summary .patch-card-header {
-    margin-bottom: 0;
-  }
-
-  details[open] .patch-summary .patch-card-header {
-    margin-bottom: var(--space-4);
-  }
-
-  .patch-details-body {
-    /* revealed when <details> is open */
-  }
-
-  details .patch-summary::after {
-    content: " ▸";
-    font-size: var(--text-xs);
-    color: var(--color-accent);
-    margin-left: var(--space-2);
-  }
-
-  details[open] .patch-summary::after {
-    content: " ▾";
-  }
-
-  /* ---- Intro blockquote ---------------------------------- */
-  .patch-intro {
-    border-left: 3px solid var(--color-accent-dim);
-    margin: 0 0 var(--space-4);
-    padding: var(--space-2) var(--space-4);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    font-style: italic;
-    line-height: var(--leading-normal);
-  }
-
-  /* ---- Change list --------------------------------------- */
-  .patch-changes {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-  }
-
-  .patch-section-heading {
-    list-style: none;
-    margin-left: calc(-1 * var(--space-6));
-    margin-top: var(--space-4);
-    margin-bottom: var(--space-2);
-    font-family: var(--font-display);
-    font-size: var(--text-xs);
-    font-weight: var(--weight-bold);
-    letter-spacing: 0.10em;
-    color: var(--color-accent);
-    text-transform: uppercase;
-  }
-
-  /* ---- Desktop layout ------------------------------------ */
-  @media (min-width: 1024px) {
-    .patch-layout {
-      grid-template-columns: 140px 1fr;
-      align-items: start;
-    }
-
-    .patch-toc {
-      display: block;
-      position: sticky;
-      top: calc(64px + var(--space-8));
-    }
-  }
-</style>

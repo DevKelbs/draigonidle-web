@@ -1,66 +1,42 @@
 # draigonidle.com
 
-Landing page for **Draigon Idle** — a dragon-themed idle game by [Stonemill Studios](https://stonemillstudios.com).
+The website for **Draigon Idle**, an idle guild game for iPhone.
 
-Built with [Astro](https://astro.build) and deployed to [Cloudflare Pages](https://pages.cloudflare.com/).
+Built with [Astro](https://astro.build) and deployed to [Cloudflare Pages](https://pages.cloudflare.com/). Pushing to `main` deploys it.
 
-## Local Development
+## Run it
 
-**Requirements:** Node.js >= 22.12.0
+Needs Node.js 22.12 or later.
 
 ```sh
-# Install dependencies
 npm install
-
-# Start dev server (http://localhost:4321)
-npm run dev
-
-# Production build
-npm run build
-
-# Preview the production build locally
+npm run dev       # http://localhost:4321
+npm run build     # the built site lands in dist/client
 npm run preview
 ```
 
-## Project Structure
+## Where things are
 
 ```
-/
-├── public/             # Static assets (favicon, images)
-├── src/
-│   ├── components/     # Reusable Astro components
-│   │   ├── Header.astro
-│   │   └── Footer.astro
-│   ├── layouts/
-│   │   └── BaseLayout.astro   # Shared HTML shell (head, header, footer)
-│   ├── pages/
-│   │   ├── index.astro        # Home — hero + feature highlights
-│   │   ├── press-kit.astro    # Press Kit
-│   │   └── patch-notes.astro  # Patch Notes
-│   └── styles/
-│       └── global.css         # Design tokens + global styles
-├── astro.config.mjs    # Astro config (Cloudflare Pages adapter)
-├── package.json
-└── tsconfig.json
+src/data/site.ts        Links, price, version, contact address. Change these here, not in the pages.
+src/layouts/            BaseLayout.astro: the page shell (head, header, footer)
+src/components/         Header, Footer, Contact (email if there is one, Discord if not)
+src/pages/              index, patch-notes, press-kit, privacy, terms
+src/styles/global.css   All the styling. The colours match the game's.
+public/images/          Pixel art and trailer scenes, made from the game's own sprites
+public/video/           The trailer
 ```
 
-## Deployment
+## Things to fill in
 
-Auto-deploys to Cloudflare Pages on push to `main`. No manual steps required.
+All in `src/data/site.ts`:
 
-The Cloudflare Pages project is configured at:
-- **Production branch:** `main`
-- **Build command:** `npm run build`
-- **Output directory:** `dist`
+- `appStoreUrl`: once the game is on the App Store. The "Join the beta" buttons turn into "Get it on the App Store".
+- `testFlightUrl`: a public TestFlight link, if there is one. Until then the beta button goes to Discord.
+- `contactEmail`: a working mailbox for privacy, legal and press questions. While it's empty, the pages point to Discord.
+- `discord`: must be an invite that never expires.
+- `legalUpdated`: change it whenever the privacy policy or terms change.
 
-## Pages
+## Patch notes
 
-| Route          | Description                        |
-| -------------- | ---------------------------------- |
-| `/`            | Home — hero, features, app badges  |
-| `/press-kit`   | Press kit — facts, assets, screens |
-| `/patch-notes` | Version history and changelogs     |
-
-## Contributing
-
-See the [Paperclip board](https://stonemillstudios.com) for open tasks. All changes require CTO review and board approval before pushing.
+Add a release to the top of the `releases` list in `src/pages/patch-notes.astro`.

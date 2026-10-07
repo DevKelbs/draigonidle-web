@@ -1,0 +1,12 @@
+---
+// How to reach us: the mailbox when there is one, the Discord until then.
+import { site } from "../data/site";
+---
+
+{
+  site.contactEmail ? (
+    <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+  ) : (
+    <a href={site.discord} rel="noopener">the Draigon Idle Discord</a>
+  )
+}

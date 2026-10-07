@@ -1,69 +1,61 @@
 ---
+import { site } from "../data/site";
+
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/patch-notes", label: "Patch Notes" },
-  { href: "/press-kit", label: "Press Kit" },
-  { href: "https://wiki.draigonidle.com", label: "Wiki", external: true },
+  { href: "/#game", label: "The game" },
+  { href: "/#trailer", label: "Trailer" },
+  { href: "/patch-notes", label: "Patch notes" },
+  { href: "/press-kit", label: "Press kit" },
+  { href: site.wiki, label: "Wiki", external: true },
 ];
 
-const { pathname } = Astro.url;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
-<header class="site-header" role="banner">
-  <div class="container">
-    <a href="/" class="site-logo" aria-label="Draigon Idle — Home">
-      Draigon Idle
+<header class="site-header">
+  <div class="container header-row">
+    <a href="/" class="site-logo" aria-label={`${site.name}, home`}>
+      <img src="/images/app-icon.png" alt="" width="32" height="32" class="pixel" />
+      <span>{site.name}</span>
     </a>
 
-    <nav class="site-nav" aria-label="Main navigation">
-      {navLinks.map(({ href, label, external }) => (
-        <a
-          href={href}
-          aria-current={pathname === href ? "page" : undefined}
-          target={external ? "_blank" : undefined}
-          rel={external ? "noopener noreferrer" : undefined}
-        >
-          {label}
-        </a>
-      ))}
+    <nav class="site-nav" aria-label="Main">
+      {
+        navLinks.map(({ href, label, external }) => (
+          <a
+            href={href}
+            aria-current={path === href ? "page" : undefined}
+            rel={external ? "noopener" : undefined}
+          >
+            {label}
+          </a>
+        ))
+      }
+      <a href={site.discord} class="btn btn-small" rel="noopener">Join the beta</a>
     </nav>
 
     <details class="mobile-nav">
-      <summary class="hamburger" aria-label="Open navigation menu">
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
+      <summary aria-label="Menu">
+        <span></span><span></span><span></span>
       </summary>
-      <div class="mobile-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
-        <nav aria-label="Mobile navigation">
-          {navLinks.map(({ href, label, external }) => (
-            <a
-              href={href}
-              aria-current={pathname === href ? "page" : undefined}
-              target={external ? "_blank" : undefined}
-              rel={external ? "noopener noreferrer" : undefined}
-            >
+      <nav aria-label="Main, small screens">
+        {
+          navLinks.map(({ href, label, external }) => (
+            <a href={href} aria-current={path === href ? "page" : undefined} rel={external ? "noopener" : undefined}>
               {label}
             </a>
-          ))}
-        </nav>
-      </div>
+          ))
+        }
+        <a href={site.discord} rel="noopener">Join the beta on Discord</a>
+      </nav>
     </details>
   </div>
 </header>
 
 <script>
-  // Scroll-aware nav: fully opaque background after 80px
-  const header = document.querySelector('.site-header') as HTMLElement | null;
-
-  function onScroll() {
-    if (window.scrollY >= 80) {
-      header?.setAttribute('data-scrolled', '');
-    } else {
-      header?.removeAttribute('data-scrolled');
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  // Close the small-screen menu when one of its links is followed.
+  const menu = document.querySelector<HTMLDetailsElement>(".mobile-nav");
+  menu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => menu.removeAttribute("open")),
+  );
 </script>
