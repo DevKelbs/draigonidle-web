@@ -21,7 +21,7 @@ export const site = {
   price: "$4.99",
 
   // Where to find us. The Discord invite has to be one that never expires.
-  discord: "https://discord.gg/hat7XYJ5",
+  discord: "https://discord.gg/8qzfC86AFq",
   x: "https://x.com/DraigonIdle",
   reddit: "https://www.reddit.com/user/draigonidle/",
   wiki: "https://wiki.draigonidle.com",
