@@ -33,8 +33,7 @@ All in `src/data/site.ts`:
 
 - `appStoreUrl`: once the game is on the App Store. The "Join the beta" buttons turn into "Get it on the App Store".
 - `testFlightUrl`: a public TestFlight link, if there is one. Until then the beta button goes to Discord.
-- `contactEmail`: a working mailbox for privacy, legal and press questions. While it's empty, the pages point to Discord.
-- `discord`: must be an invite that never expires.
+- `discord`: must be an invite that never expires. It's also the contact for privacy, legal and press questions: there's no mailbox.
 - `legalUpdated`: change it whenever the privacy policy or terms change.
 
 ## Patch notes

@@ -20,15 +20,12 @@ export const site = {
   version: "0.9.0",
   price: "$4.99",
 
-  // Where to find us. The Discord invite has to be one that never expires.
+  // Where to find us. The Discord is also how to reach us: its invite never
+  // expires.
   discord: "https://discord.gg/8qzfC86AFq",
   x: "https://x.com/DraigonIdle",
   reddit: "https://www.reddit.com/user/draigonidle/",
   wiki: "https://wiki.draigonidle.com",
-
-  // A working mailbox for privacy, legal and press questions. While this
-  // is empty the pages send people to Discord instead.
-  contactEmail: "",
 
   // The Kit (newsletter) form.
   kitUid: "6b4067efe9",
