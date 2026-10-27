@@ -5,13 +5,13 @@ import { site, skills } from "../data/site";
 
 const facts = [
   ["Title", site.name],
-  ["Developer", `${site.person}, publishing as ${site.studio}`],
+  ["Developer", site.studio],
   ["Genre", "Idle guild RPG"],
   ["Platform", "iPhone (iOS 15 or later)"],
   ["Status", site.appStoreUrl ? "Out now" : site.status],
   ["Price", `Free to start. One purchase of ${site.price} for the full game.`],
   ["Ads", "None"],
-  ["Online", "Not needed. Saves stay on the device."],
+  ["Online", "Not needed. Sign in for cloud saves and Waymeet, the online town."],
   ["Language", "English"],
 ];
 
@@ -70,8 +70,8 @@ const shots = [
             game is closed, for hours at a time. When you check in you collect
             what they found, gear them up and send them further: down the Old Mine,
             into the Wolf Den, out to sea on a boat that grows from a raft to a
-            galleon. Along the way you raise dragons, and places you've beaten come
-            back as raids you fight by hand. More is being added.
+            galleon. Along the way you raise dragons, and the bosses of places
+            you've beaten wait for you to fight them yourself. More is being added.
           </p>
         </div>
       </div>
@@ -81,19 +81,20 @@ const shots = [
         <ul class="ticks" role="list">
           <li>Skills to train: {skills.join(", ")}.</li>
           <li>Places to send a party, by land and by sea, from more than one camp.</li>
-          <li>Raids played by hand, with timed blows, drawn bows, traced runes and parries.</li>
+          <li>Boss fights you lead yourself, seen from above, with a combat triangle of Melee, Range and Magic.</li>
+          <li>Waymeet, an online town to share: chat, sparring, dice and darts, and raids for up to four.</li>
           <li>Dragons to find, feed and win over.</li>
           <li>A boat that grows from a raft to a galleon.</li>
-          <li>Tier after tier of gear, plus sea, archery and magic kits, all drawn on the wearer.</li>
-          <li>A camp with a life of its own: market carts, spells to trace, a cat, an angry chicken.</li>
-          <li>No ads, no energy, no timers to pay past, no account.</li>
+          <li>Tier after tier of gear, plus sea, archery and magic kits, all drawn on the wearer, and lanterns that light the night.</li>
+          <li>A camp with a life of its own: market carts, hunting grounds, a bounty board, a cat, an angry chicken.</li>
+          <li>No ads, no energy, no timers to pay past, no account needed.</li>
         </ul>
       </div>
 
       <div class="panel" style="margin-bottom: 22px;">
         <h2>Price</h2>
         <p>
-          The game is free through all of Briarhold: the camp, its raids, the first
+          The game is free through all of Briarhold: the camp, its boss fights, the first
           boats and a fight at sea. One purchase of {site.price} opens the Saltmire
           Coast, with a new camp, bigger ships, more places and the rest of the
           story. There is nothing else to buy.

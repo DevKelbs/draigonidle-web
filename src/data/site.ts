@@ -3,9 +3,9 @@
 // fallback in its place.
 export const site = {
   name: "Draigon Idle",
-  tagline: "Run a guild. Raise a dragon. Play the raids yourself.",
+  tagline: "Run a guild. Raise a dragon. Fight the bosses yourself.",
   description:
-    "Draigon Idle is an idle guild game for iPhone. Your guild gathers, crafts and sails while you're away. You gear them up, raise dragons and play the raids yourself.",
+    "Draigon Idle is an idle guild game for iPhone. Your guild gathers, crafts and sails while you're away. You gear them up, raise dragons and fight the bosses yourself.",
   url: "https://draigonidle.com",
 
   // Who makes it.
@@ -17,7 +17,7 @@ export const site = {
   appStoreUrl: "",
   testFlightUrl: "",
   status: "In beta on TestFlight",
-  version: "0.9.1",
+  version: "0.9.5",
   price: "$4.99",
 
   // Where to find us. The Discord is also how to reach us: its invite never
@@ -31,18 +31,22 @@ export const site = {
   kitUid: "6b4067efe9",
   kitSrc: "https://draigon-idle.kit.com/6b4067efe9/index.js",
 
-  legalUpdated: "October 6, 2026",
+  legalUpdated: "October 27, 2026",
 };
 
 export const skills = [
   "Woodcutting",
   "Mining",
   "Fishing",
+  "Foraging",
+  "Hunting",
   "Smithing",
   "Cooking",
-  "Tailoring",
-  "Combat",
-  "Archery",
+  "Crafting",
+  "Woodworking",
+  "Melee",
+  "Range",
   "Magic",
-  "Sailing",
+  "Defence",
+  "Hitpoints",
 ];

@@ -9,7 +9,7 @@ const features = [
     h: 40,
     alt: "Guild members in work clothes: a woodcutter, a miner, a cook, a smith and an angler.",
     title: "A guild that keeps working",
-    text: "Hire a crew and put them on jobs. They chop, mine, fish, smith, cook and weave for hours while the game is closed. Checking in takes a few taps.",
+    text: "Hire a crew and put them on jobs. They chop, mine, fish, forage, hunt, smith, cook and craft for hours while the game is closed. Checking in takes a few taps.",
   },
   {
     art: "/images/art-gear.png",
@@ -17,7 +17,7 @@ const features = [
     h: 40,
     alt: "The same fighter in better and better armour, starting from scrap.",
     title: "Gear you can see",
-    text: "Tier after tier of arms and armour, starting from scrap, plus kits for sailors, archers and mages. Everything a member wears is drawn on them.",
+    text: "Tier after tier of arms and armour, starting from scrap, plus kits for sailors, archers and mages. Each piece needs a level to wear, and two trinket slots hold work tools and lanterns. Everything a member wears is drawn on them.",
   },
   {
     art: "/images/art-dragons.png",
@@ -32,8 +32,8 @@ const features = [
     w: 208,
     h: 52,
     alt: "A fighter, an archer and a mage facing a wolf and a stone guardian.",
-    title: "Raids you play yourself",
-    text: "Go back to places you've beaten and fight them by hand. Time a heavy blow, draw a bow, trace a rune, parry the big hits. Some are fought on your ship's deck.",
+    title: "Bosses you fight yourself",
+    text: "Go back to places you've beaten and lead the fight against their bosses, seen from above. Read the big moves and eat when you must while your companions fight beside you. Melee beats Range, Range beats Magic, Magic beats Melee.",
   },
   {
     art: "/images/art-ships.png",
@@ -50,7 +50,7 @@ const features = [
     scale: 3,
     alt: "A market cart, a campfire, a small grey cat and a chicken.",
     title: "A camp with a life of its own",
-    text: "Market carts roll in. A cat adopts your best mage. Now and then an angry chicken runs through camp. Catch it for a few coins.",
+    text: "Market carts roll in. Fighters work the hunting grounds and take on bounties from the board. A cat adopts your best mage. Now and then an angry chicken runs through camp. Catch it for a few coins.",
   },
 ];
 
@@ -166,8 +166,8 @@ const shots = [
         </p>
         <ul class="ticks" role="list">
           <li>Plays in short check-ins. No energy, no timers to pay past.</li>
-          <li>Works offline. Your save stays on your phone.</li>
-          <li>No account to make and nothing to sign in to.</li>
+          <li>Works offline. Sign in only if you want cloud saves.</li>
+          <li>Waymeet, an online town: chat, spar, fish and raid with other players, if you like.</li>
         </ul>
       </div>
     </div>
@@ -192,8 +192,8 @@ const shots = [
         <p class="eyebrow">Price</p>
         <h2 id="price-title">Free to start. One purchase for the rest.</h2>
         <p class="lead">
-          All of Briarhold is free: the camp, its raids, the first boats and a
-          fight at sea. That's days of play before you pay anything.
+          All of Briarhold is free: the camp, its boss fights, the first boats and
+          a fight at sea. That's days of play before you pay anything.
         </p>
         <p class="lead">
           One purchase of {site.price} opens the Saltmire Coast. There are no ads and
@@ -207,7 +207,7 @@ const shots = [
           <li>Saltmire: a new camp to build, across the water</li>
           <li>Bigger ships, up to the Galleon</li>
           <li>The Blue Lamp: the story goes on</li>
-          <li>More places to sail and fight</li>
+          <li>More places to sail and fight, and the woods beyond</li>
         </ul>
         <p class="fine">Price in US dollars. It varies by country.</p>
       </div>

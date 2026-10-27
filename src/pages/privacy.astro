@@ -6,7 +6,7 @@ import { site } from "../data/site";
 
 <BaseLayout
   title="Privacy Policy"
-  description="What Draigon Idle and draigonidle.com collect about you. The short version: the game collects nothing."
+  description="What Draigon Idle and draigonidle.com collect about you, and why. The short version: you can play without an account, and online play keeps only what it needs."
 >
   <section class="page-head">
     <div class="container">
@@ -19,10 +19,11 @@ import { site } from "../data/site";
     <div class="container prose">
       <div class="callout">
         <p>
-          <strong>The short version.</strong> The game doesn't collect anything about
-          you. It has no accounts, no ads, no analytics and no tracking, and your save
-          stays on your phone. This site only learns your email address if you sign up
-          for the newsletter.
+          <strong>The short version.</strong> You can play without an account, and then
+          your save stays on your phone. If you go online (cloud saves, Waymeet,
+          friends), our game server keeps your guild and what other players need to
+          see, and nothing more. There are no ads, no analytics and no tracking. You can
+          delete your online account from the game's Settings at any time.
         </p>
       </div>
 
@@ -30,27 +31,105 @@ import { site } from "../data/site";
       <p>
         {site.name} is made by {site.person}, an independent developer publishing as
         {site.studio}. "We" and "us" on this page mean {site.person}. This policy
-        covers the {site.name} app for iPhone and the website at draigonidle.com.
+        covers the {site.name} app for iPhone and Android, the game server it talks to,
+        and the website at draigonidle.com.
       </p>
 
-      <h2>The game</h2>
-      <h3>What it stores</h3>
+      <h2>Playing offline</h2>
       <p>
-        Your progress is saved in a file on your device. It isn't sent to us or to
-        anyone else, and we can't see it. Because it's part of the app's data, it may
-        be included in your own device backups if you've turned those on with Apple.
-        Deleting the app deletes the save.
+        Your progress is saved in a file on your device. Played offline, it isn't sent
+        to us or to anyone else. Because it's part of the app's data, it may be included
+        in your own device backups if you've turned those on. Deleting the app deletes
+        the save.
       </p>
 
-      <h3>What it doesn't do</h3>
+      <h2>Playing online</h2>
+      <p>
+        Cloud saves, Waymeet (the town you share with other players), friends, player
+        cards, raids and world events need our game server. They're optional: the game
+        asks before you use them, and plays on without them.
+      </p>
+
+      <h3>Your account</h3>
+      <p>
+        The first time you go online, the game makes an account on our server, known by
+        a random ID the app creates. It isn't your phone's hardware ID. If you sign in
+        with Apple or Google, that account is linked so your guild can follow you to
+        another phone. Apple or Google tells our server an ID for your account with
+        them, and may pass on the name or email address you chose to share. We use these
+        only to sign you in.
+      </p>
+
+      <h3>What the server keeps</h3>
       <ul>
-        <li>No account, sign-in or profile.</li>
-        <li>No advertising and no advertising identifiers.</li>
-        <li>No analytics or tracking software.</li>
-        <li>No access to your contacts, photos, location, camera or microphone.</li>
+        <li>
+          <strong>Your guild's save</strong>, so it can be restored on another phone, and
+          a few earlier copies (up to ten, about an hour apart) in case a save goes wrong.
+        </li>
+        <li>
+          <strong>Your player card</strong>: your leader's and guild's names, their look,
+          crest and banner, your draigon, your hall's level, the counts you've earned
+          and the two things you pin. Other players can see it.
+        </li>
+        <li>
+          <strong>Your hall</strong>, without anything private in it, so your friends can
+          visit it.
+        </li>
+        <li>
+          <strong>Friends</strong>: your friends, requests, and anyone you've blocked.
+          Friends see when you last played.
+        </li>
+        <li>
+          <strong>Online play</strong>: what you've earned from world events and work
+          parties until the game collects it, and the moves a raid or a sparring bout
+          needs while it's on.
+        </li>
+        <li>
+          <strong>Your birth year and that you accepted the chat rules</strong>, if you
+          give them to type in Waymeet's chat. The year can't be changed once given.
+        </li>
+        <li>
+          <strong>Moderation</strong>: reports, a moderator's actions (a name reset, a
+          muted chat, a suspension) and the reason for them.
+        </li>
       </ul>
 
-      <h3>Notifications</h3>
+      <h3>Chat</h3>
+      <p>
+        Waymeet's chat is passed between the players in the same copy of the town and
+        run through a word filter. It isn't stored with your account. The server holds
+        the last lines said in each copy of the town for a short while, so that if
+        someone reports a player, the lines around it can be kept with the report for a
+        moderator to read. Lines you send are shown to other players with your leader's
+        name.
+      </p>
+
+      <h3>Connections</h3>
+      <p>
+        Like any online service, the server processes your IP address and your app's
+        version to connect you and keep the service secure. Our server is reached
+        through Cloudflare, which handles that traffic on our behalf. See
+        <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare's privacy policy</a>.
+      </p>
+
+      <h3>How long it's kept</h3>
+      <p>
+        Your account and what it holds are kept while the account exists. When you
+        delete it, your save, card, hall, friends and sign-in links go with it, and an
+        Apple sign-in is cancelled too. Reports and moderators' notes about an account
+        may be kept a while longer, so a moderator can still act on them. Copies in
+        our server's backups are replaced as new backups are made.
+      </p>
+
+      <h2>What the game doesn't do</h2>
+      <ul>
+        <li>No advertising and no advertising identifiers.</li>
+        <li>No analytics, tracking or crash-reporting software of our own.</li>
+        <li>No access to your contacts, photos, location, camera or microphone.</li>
+        <li>No selling or renting of anything about you.</li>
+      </ul>
+
+      <h2>Notifications</h2>
       <p>
         If you allow them, the game reminds you when a party is home, a cart has
         arrived and so on. These are scheduled on your device by the game itself. No
@@ -58,30 +137,32 @@ import { site } from "../data/site";
         all of them in your phone's Settings.
       </p>
 
-      <h3>The purchase</h3>
+      <h2>The purchase</h2>
       <p>
-        The game has one optional purchase, which opens the full game. Apple handles
-        the payment. We never see your name, card or billing details. The game is only
-        told whether your Apple account owns the purchase, and it keeps that answer in
-        your save. Apple's handling of your payment is covered by
-        <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple's privacy policy</a>.
+        The game has one optional purchase, which opens the full game. Apple (on iPhone)
+        or Google (on Android) handles the payment. We never see your name, card or
+        billing details. The game is only told whether your Apple or Google account owns
+        the purchase, and it keeps that answer in your save. See
+        <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple's privacy policy</a>
+        and
+        <a href="https://policies.google.com/privacy" rel="noopener">Google's privacy policy</a>.
       </p>
 
-      <h3>The beta (TestFlight)</h3>
+      <h2>Test versions</h2>
       <p>
-        If you test the game through Apple's TestFlight, Apple passes on what you
-        choose to send us: written feedback, screenshots and crash reports, along with
-        basic details such as your device model and iOS version. If you were invited by
-        email, we have the address the invitation went to. We use these only to fix the
-        game and to reach you about the beta, and we delete tester details when the
-        beta ends or when you ask.
+        If you test the game through Apple's TestFlight or Google Play's testing tracks,
+        Apple or Google passes on what you choose to send us: written feedback,
+        screenshots and crash reports, along with basic details such as your device
+        model and system version. If you were invited by email, we have the address the
+        invitation went to. We use these only to fix the game and to reach you about
+        testing, and we delete tester details when testing ends or when you ask.
       </p>
 
-      <h3>What Apple shows us</h3>
+      <h2>What the stores show us</h2>
       <p>
-        Apple gives every developer sales and download totals, and usage and crash
-        figures from people who have agreed to share them with developers. These are
-        grouped together and don't identify you.
+        Apple and Google give every developer sales and download totals, and usage and
+        crash figures from people who have agreed to share them with developers. These
+        are grouped together and don't identify you.
       </p>
 
       <h2>This website</h2>
@@ -89,8 +170,7 @@ import { site } from "../data/site";
         <li>
           <strong>Hosting.</strong> The site is served by Cloudflare. Like any web host,
           Cloudflare processes your IP address and browser details to deliver pages and
-          to keep the site secure. See
-          <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare's privacy policy</a>.
+          to keep the site secure.
         </li>
         <li>
           <strong>Newsletter.</strong> If you sign up, your email address is stored by
@@ -104,33 +184,42 @@ import { site } from "../data/site";
           cookies to follow you between sites.
         </li>
         <li>
-          <strong>Links.</strong> Discord, X, Reddit and the App Store are run by other
-          companies and follow their own policies.
+          <strong>Links.</strong> Discord, X, Reddit, the wiki's host and the app stores
+          are run by other companies and follow their own policies.
         </li>
       </ul>
 
       <h2>Sharing</h2>
       <p>
         We don't sell personal information and we don't share it for advertising. The
-        only companies involved are the ones named above (Apple, Cloudflare and Kit),
-        each for the job described.
+        only companies involved are the ones named above (Apple, Google, Cloudflare and
+        Kit), each for the job described. Other players see only what's described above
+        as shown to them: your card, your chat lines, and, for friends, your hall and
+        when you last played.
       </p>
 
       <h2>Children</h2>
       <p>
-        {site.name} isn't directed at children under 13, and we don't knowingly collect
-        personal information from them. If you believe a child has given us an email
-        address, tell us and we'll delete it.
+        {site.name} isn't directed at children under 13. In Waymeet's chat, anyone who
+        says they're under 13, or doesn't give a birth year, can only send and see the
+        game's own set phrases, never typed messages. If you believe a child has given
+        us personal information, tell us and we'll delete it.
       </p>
 
       <h2>Your choices</h2>
       <ul>
-        <li>To erase your game data, delete the app.</li>
+        <li>Play offline: nothing is sent to us.</li>
+        <li>Turn cloud saves off in the game; your player card is taken down with them.</li>
+        <li>
+          Delete your online account in the game's Settings. This removes it from our
+          server; the guild on your phone stays.
+        </li>
+        <li>To erase your game data on your phone, delete the app.</li>
         <li>To leave the newsletter, use the link in any email.</li>
         <li>
-          To see, correct or delete anything we hold about you (a newsletter address or
-          beta details), ask us. Depending on where you live, the law may give you
-          further rights over your personal information, and we'll honour them.
+          To see, correct or delete anything we hold about you, ask us. Depending on
+          where you live, the law may give you further rights over your personal
+          information, and we'll honour them.
         </li>
       </ul>
 

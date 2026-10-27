@@ -6,6 +6,162 @@ import { site } from "../data/site";
 // headed lists of what changed.
 const releases = [
   {
+    version: "0.9.5",
+    date: "2026-10-27",
+    label: "Beta, on TestFlight",
+    summary:
+      "Health, armour and a fighting style for everyone, and a lot of tidying. Saves were reset for this one.",
+    groups: [
+      {
+        title: "New",
+        items: [
+          "Hitpoints and Defence: two new skills. Health comes from Hitpoints, and Defence and armour cut the blows you take.",
+          "A combat triangle, as in RuneScape: Melee beats Range, Range beats Magic, Magic beats Melee. Every foe, boss and place has a style, and the cards show who has the edge.",
+          "A stance for each member: pick where their fighting XP goes.",
+          "Gear needs a level to wear. Anything already on stays on.",
+          "Two trinket slots. Work tools go there now, so they help at the job without taking a hand.",
+          "Lanterns to make at the Crafting table. Whoever wears one carries a pool of light through camp, towns and Waymeet after dark.",
+          "Three new skills: Woodworking (cut and string your own bows, fletch arrows), Foraging and Hunting.",
+          "Hunting grounds north of every camp. Put members on the Fight job and they work through the mobs while you're away, with food and arrows from storage.",
+          "A bounty board by the hall, with marks to spend in its shop.",
+          "Storage opens over the camp from its own button, and shows the guild's gold.",
+          "A little sign on the road to town tells you when someone's waiting there or a stall is open.",
+        ],
+      },
+      {
+        title: "Changed",
+        items: [
+          "Sparring goes by the same health, armour and triangle as every other fight.",
+          "Combat is called Melee and Archery is called Range.",
+          "Sailing is gone as a skill. Voyages count everyone's own power, Magic and Range included, with the boat's on top.",
+          "Work outfits are gone. Only the tools are kept.",
+          "Deeds are Achievements, Decorate is Build, and the Hall of Echoes is the Boss room.",
+          "Recipes are picked by material, as at a RuneScape anvil.",
+          "The Journal lists main quests and side quests apart.",
+          "The Guild is one sheet, with Members, Stats and Friends.",
+        ],
+      },
+      {
+        title: "Fixed",
+        items: [
+          "The campfire's sheet draws the same fire as the camp.",
+          "The draigon faces the fire when you first meet it, and people round the fire stand in front of its flames.",
+          "Driftwood can't all be picked up from one spot on the beach.",
+          "A double tap on the banner's crest no longer leaves a black screen.",
+          "The leader stops working while they're off in a town.",
+          "Lots of stale and wrong words put right.",
+        ],
+      },
+    ],
+  },
+  {
+    version: "0.9.4",
+    date: "2026-10-24",
+    label: "Beta, on TestFlight",
+    summary: "Boss fights from above, and the guildhouse to walk round.",
+    groups: [
+      {
+        title: "New",
+        items: [
+          "Boss fights seen from above, in each boss's own lair. Lead the fight, read its big moves, and your companions fight beside you.",
+          "Every boss is remade this way, at sea too, and the Hollow raid has three rooms.",
+          "The guildhouse from above: walk in and around it, with a plan for every hall level.",
+          "The Boss room (then the Hall of Echoes): build portals, attune them to bosses you've beaten, set up gear stands and keep the war fire going.",
+          "The King's Road, walked from Briarhold's gate to Waymeet.",
+          "Waystones in every town and in Waymeet, and a magic surge to get about faster.",
+          "Sparring is fought from above, with rules set by whoever challenges.",
+          "The guild tree rebuilt: six branches, with new ways to earn points.",
+          "The main menu asks you to sign in or play offline.",
+        ],
+      },
+      {
+        title: "Changed",
+        items: [
+          "Fewer places on the map, and every voyage has a boss.",
+          "Quivers are worn on the back. Crafting makes staves and bows.",
+          "Talking in town happens in a dialogue box at the foot of the screen.",
+          "A sturdier bow, drawn and loosed properly, with arrows in flight.",
+        ],
+      },
+      {
+        title: "Fixed",
+        items: [
+          "Signing in can't get stuck any more, and there's a way out while it's slow.",
+        ],
+      },
+    ],
+  },
+  {
+    version: "0.9.3",
+    date: "2026-10-20",
+    label: "Beta, on TestFlight",
+    summary: "Waymeet opens: a town to share with other players.",
+    groups: [
+      {
+        title: "New",
+        items: [
+          "Waymeet, an online town. Walk its streets, chat with quick chat, fish its pond, play dice and darts in the tavern and spar in the ring.",
+          "Raids for up to four players, from Waymeet's arena.",
+          "World events: now and then the elder draigon lands in Waymeet's square, and everyone there fights it together.",
+          "Work parties: raise the Festival Pavilion with everyone, a step at a time.",
+          "Seasons that follow the real months, with snow, petals and leaves, and festivals through the year.",
+          "Cloud saves, signing in with Apple or Google.",
+          "Player cards with two pinned show-offs, friends, and visiting a friend's hall to look round.",
+          "The towns redrawn from above and walked round, with townsfolk going about their day.",
+          "The waystones: travel between camps, towns and Waymeet.",
+        ],
+      },
+      {
+        title: "Changed",
+        items: [
+          "The draigons, foes and pets are redrawn, with full animation.",
+          "The Trophy Hall became the Hall of Echoes.",
+          "Mage magic looks like storybook magic: orbs, blooms and shooting stars.",
+          "Saltmire and Ashenveil are drawn as places of their own.",
+        ],
+      },
+      {
+        title: "Fixed",
+        items: [
+          "A quick second tap on Fight no longer opens a second fight under the first.",
+        ],
+      },
+    ],
+  },
+  {
+    version: "0.9.2",
+    date: "2026-10-13",
+    label: "Beta, on TestFlight",
+    summary:
+      "Boss fights, the Trophy Hall, and everything from the later 0.9.1 tester builds.",
+    groups: [
+      {
+        title: "New",
+        items: [
+          "Boss fights everywhere, played the RuneScape way, with ticks, hitsplats, eating, drops and kill counts. Each boss has its own unique drop and a pet.",
+          "The Trophy Hall: a hall of doors to every boss you've beaten.",
+          "Ashenveil Woods: a third region, with a forest camp under the great tree, the Circle's story and its people.",
+          "Briarhold and Saltmire's towns, down the lane from camp, to walk round.",
+          "Friends and more: get to know the people in town, with daily moments, gifts and scenes of your own.",
+          "Members make friends with each other, and do a little better side by side.",
+          "Quest steps play as scenes, at the fire and at the places they happen.",
+          "The guild hall from inside, with stations to build and a room to decorate.",
+          "Looks for everyone: hairstyles, beards, face marks, and a guild crest on a pennant over the hall.",
+          "Capes, worn for looks.",
+          "The guild's banner: tap its crest for the Journal's pages and Settings.",
+        ],
+      },
+      {
+        title: "Changed",
+        items: [
+          "Raids are called boss fights, and the leader leads them.",
+          "The map hangs in the hall, and the sea chart is on the ship.",
+          "The Workshop has its own station, and the charter became the Guild Tree.",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.9.1",
     date: "2026-10-07",
     label: "Beta, on TestFlight",
