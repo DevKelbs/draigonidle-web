@@ -39,7 +39,6 @@ export const skills = [
   "Mining",
   "Fishing",
   "Foraging",
-  "Hunting",
   "Smithing",
   "Cooking",
   "Crafting",
