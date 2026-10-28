@@ -6,11 +6,40 @@ import { site } from "../data/site";
 // headed lists of what changed.
 const releases = [
   {
+    version: "0.9.7",
+    date: "2026-10-28",
+    label: "Beta, on TestFlight",
+    summary:
+      "A RuneScape-style Spellbook with teleports, benches to sit on in Waymeet, and Finn the bard's songs. Saves carry over.",
+    groups: [
+      {
+        title: "New",
+        items: [
+          "The Spellbook is one page of icons, every spell and teleport with new art. Tap to cast or go; hold to read about it.",
+          "Teleports to each camp, each town and Waymeet, each needing your leader's Magic. Paid teleports train Magic.",
+          "Every bench in Waymeet can be sat on, and picnic tables stand round the carousel. Everyone sees who's sitting.",
+          "Finn the bard plays four songs of his own at his stops, or one just for you if you tap him.",
+        ],
+      },
+      {
+        title: "Changed",
+        items: [
+          "Melody's Carousel is now the Melly-Go-Round.",
+          "Old Tamsin's hut moved across the pond, with a little jetty of her own.",
+          "Saltmire's camp is calmer: no lighthouse or harbour arm, a layered cliff with a proper stair, and the road to town leaves to the east.",
+          "No Home teleport: your camp's own teleport takes you back. Without the Magic for it, walk down a town's lane or out of Waymeet's south gate.",
+          "Walking down another camp's town lane takes your leader to that camp.",
+          "The elder draigon's Go needs Magic 8, like the Waymeet teleport.",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.9.6",
     date: "2026-10-28",
     label: "Beta, on TestFlight",
     summary:
-      "Sparring in the city, a new Saltmire camp, gem spells, and every material worth grinding. Saves carry over.",
+      "Sparring in the city, a new Saltmire camp, gem spells, Melody's Carousel, and every material worth grinding. Saves carry over.",
     groups: [
       {
         title: "New",
@@ -21,7 +50,10 @@ const releases = [
           "Lures: a hide and five feathers make ten at Woodworking. Fishers with lures catch fish faster.",
           "Quivers are sewn at the loom, one for every archery tier.",
           "The recruits board stands outside the guildhouse, with the recruits on offer waiting in front of it.",
-          "The Crafting table sorts decor by kind, with a Can make filter.",
+          "Melody's Carousel turns in Waymeet's park, beside the bandstand. Hop on a horse for a ride to its own music-box waltz, and everyone nearby sees you go round.",
+          "Tern Rock: a short first voyage in Maren's rigged raft, for driftwood, feathers and shrimp. The Far Light now sails there before the crossing.",
+          "The main menu shows your save: your leader, guild, camp and how long since you last played. Settings has its own button under Continue.",
+          "The Crafting table's Build tab has tabs across the top: Stations, Decor, Walls & floors, Capes and Lanterns. Decor sorts by kind, with a Can make filter.",
           "You can surge at camp while walking, once you've learned Surge.",
         ],
       },
@@ -37,7 +69,10 @@ const releases = [
           "The Fight job is called Combat.",
           "The Fellowship branch of the guild tree is gone; its points come back.",
           "Stats and Social hang from the banner, beside Build and Settings.",
+          "All members opens in a box over the camp, like the Journal and Inventory. Long-press the Guild button to jump straight to it. The boxes are a little smaller.",
+          "Two side quests are gone: Somewhere to Set Up and Wolves at the Wood's Edge.",
           "The elder draigon's Go costs the waystones' fare to Waymeet.",
+          "The mage's cat and the archer's hawk are gone. Rune grades come from your drawing alone.",
         ],
       },
       {

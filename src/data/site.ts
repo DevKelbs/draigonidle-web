@@ -17,7 +17,7 @@ export const site = {
   appStoreUrl: "",
   testFlightUrl: "",
   status: "In beta on TestFlight",
-  version: "0.9.6",
+  version: "0.9.7",
   price: "$4.99",
 
   // Where to find us. The Discord is also how to reach us: its invite never
