@@ -2,10 +2,10 @@
 // An empty string means "not yet": the pages hide the link or show a
 // fallback in its place.
 export const site = {
-  name: "Draigon Idle",
+  name: "Hatchfire",
   tagline: "Run a guild. Raise a dragon. Fight the bosses yourself.",
   description:
-    "Draigon Idle is an idle guild game for iPhone. Your guild gathers, crafts and sails while you're away. You gear them up, raise dragons and fight the bosses yourself.",
+    "Hatchfire is an idle guild game for iPhone. Your guild gathers, crafts and sails while you're away. You gear them up, raise dragons and fight the bosses yourself.",
   url: "https://draigonidle.com",
 
   // Who makes it.
