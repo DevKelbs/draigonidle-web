@@ -519,6 +519,12 @@ ul {
   align-items: center;
 }
 
+/* The teaser on its own, in the middle. */
+.teaser-solo .phone {
+  max-width: 300px;
+  margin-inline: auto;
+}
+
 .phone {
   border: 6px solid #0b0a10;
   border-radius: 28px;
