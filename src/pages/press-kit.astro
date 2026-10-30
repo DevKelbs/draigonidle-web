@@ -7,7 +7,7 @@ const facts = [
   ["Title", site.name],
   ["Developer", site.studio],
   ["Genre", "Idle guild RPG"],
-  ["Platform", "iPhone (iOS 15 or later)"],
+  ["Platform", "iPhone (iOS 15 or later) and Android"],
   ["Status", site.appStoreUrl ? "Out now" : site.status],
   ["Price", `Free to start. One purchase of ${site.price} for the full game.`],
   ["Ads", "None"],
@@ -16,22 +16,16 @@ const facts = [
 ];
 
 const shots = [
-  ["shot-camp-plain", "The camp"],
-  ["shot-camp", "Build your guild"],
-  ["shot-dragon", "The dragon"],
-  ["shot-map", "The map"],
-  ["shot-raid", "A raid"],
-  ["shot-den", "The Wolf Den"],
-  ["shot-ruin", "The Ruin"],
-  ["shot-watch", "The dragon's watch"],
-  ["shot-back", "Home again"],
-  ["shot-grow", "The guild grows"],
+  ["teaser-camp", "The camp at night"],
+  ["teaser-egg", "An egg by the fire"],
+  ["teaser-hatch", "It hatches"],
+  ["teaser-title", "The title"],
 ];
 ---
 
 <BaseLayout
   title="Press Kit"
-  description="Facts, a description, images and the trailer for anyone writing about or covering Hatchfire."
+  description="Facts, a description, images and the teaser for anyone writing about or covering Hatchfire."
 >
   <section class="page-head">
     <div class="container">
@@ -65,13 +59,14 @@ const shots = [
           <p>{site.tagline}</p>
           <h2>In a paragraph</h2>
           <p>
-            {site.name} is an idle guild game for iPhone. You lead a small guild in
-            Briarhold. Its members gather, craft and go out on expeditions while the
-            game is closed, for hours at a time. When you check in you collect
-            what they found, gear them up and send them further: down the Old Mine,
-            into the Wolf Den, out to sea on a boat that grows from a raft to a
-            galleon. Along the way you raise dragons, and the bosses of places
-            you've beaten wait for you to fight them yourself. More is being added.
+            {site.name} is an idle guild game for iPhone and Android. You lead a
+            small guild in Briarhold. Its members gather, craft and go out on
+            expeditions while the game is closed, for hours at a time. When you
+            check in you collect what they found, gear them up and send them
+            further: down the Old Mine, into the Wolf Den, and out to sea in boats
+            bought from a raft up to a galleon. Along the way you raise dragons,
+            and the bosses of places you've beaten wait for you to fight them
+            yourself. More is being added.
           </p>
         </div>
       </div>
@@ -84,7 +79,7 @@ const shots = [
           <li>Boss fights you lead yourself, seen from above, with a combat triangle of Melee, Range and Magic.</li>
           <li>Waymeet, an online town to share: chat, sparring, dice and darts, and raids for up to four.</li>
           <li>Dragons to find, feed and win over.</li>
-          <li>A boat that grows from a raft to a galleon.</li>
+          <li>Boats to buy, from a raft to a galleon, to sail between camps and run cargo.</li>
           <li>Tier after tier of gear, plus sea, archery and magic kits, all drawn on the wearer, and lanterns that light the night.</li>
           <li>A camp with a life of its own: market carts, hunting grounds, a bounty board, boss pets, an angry chicken.</li>
           <li>No ads, no energy, no timers to pay past, no account needed.</li>
@@ -96,16 +91,18 @@ const shots = [
         <p>
           The game is free through all of Briarhold: the camp, its boss fights, the first
           boats and a fight at sea. One purchase of {site.price} opens the Saltmire
-          Coast, with a new camp, bigger ships, more places and the rest of the
+          Coast, with a second camp, bigger boats, more places and the rest of the
           story. There is nothing else to buy.
         </p>
       </div>
 
       <div class="panel" style="margin-bottom: 22px;">
-        <h2>Trailer</h2>
+        <h2>Teaser</h2>
         <p>
-          48 seconds, vertical, 720 by 1280.
-          <a href="/video/draigon-idle-trailer.mp4" download>Download the MP4</a>
+          15 seconds, made from the game's own art and sounds. Download it as an
+          MP4: <a href="/video/hatchfire-teaser-1080x1920.mp4" download>vertical, 1080 by 1920</a>,
+          <a href="/video/hatchfire-teaser-1080x1080.mp4" download>square, 1080 by 1080</a>, or
+          <a href="/video/hatchfire-teaser.mp4" download>vertical, 720 by 1280</a>.
         </p>
       </div>
 
@@ -119,9 +116,9 @@ const shots = [
             </a>
           </li>
           <li>
-            <a href="/images/hero-night.png" download>
-              <img class="pixel wide" src="/images/hero-night.png" alt="The camp at night." width="480" height="210" loading="lazy" />
-              Camp at night (PNG, pixel size)
+            <a href="/images/hero-camp.png" download>
+              <img class="pixel wide" src="/images/hero-camp.png" alt="Briarhold's camp from above at night." width="780" height="420" loading="lazy" />
+              The camp at night (PNG)
             </a>
           </li>
           <li>
@@ -134,7 +131,7 @@ const shots = [
       </div>
 
       <div class="panel">
-        <h2>Scenes from the trailers</h2>
+        <h2>Stills from the teaser</h2>
         <p class="fine" style="margin-bottom: 16px;">Vertical, 540 by 960. Select one to download it.</p>
         <ul class="downloads" role="list">
           {

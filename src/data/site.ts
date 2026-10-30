@@ -5,7 +5,7 @@ export const site = {
   name: "Hatchfire",
   tagline: "Run a guild. Raise a dragon. Fight the bosses yourself.",
   description:
-    "Hatchfire is an idle guild game for iPhone. Your guild gathers, crafts and sails while you're away. You gear them up, raise dragons and fight the bosses yourself.",
+    "Hatchfire is an idle guild game for iPhone and Android. Your guild gathers, crafts and sails while you're away. You gear them up, raise dragons and fight the bosses yourself.",
   url: "https://draigonidle.com",
 
   // Who makes it.
@@ -16,7 +16,7 @@ export const site = {
   // Where to get it. Fill these in when they exist.
   appStoreUrl: "",
   testFlightUrl: "",
-  status: "In beta on TestFlight",
+  status: "In beta on TestFlight and Google Play",
   version: "0.9.8",
   price: "$4.99",
 

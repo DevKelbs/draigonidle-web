@@ -4,73 +4,32 @@ import { site, skills } from "../data/site";
 
 const features = [
   {
-    art: "/images/art-guild.png",
-    w: 176,
-    h: 40,
-    alt: "Guild members in work clothes: a woodcutter, a miner, a cook, a smith and an angler.",
+    icon: "/images/icon-guild.png",
     title: "A guild that keeps working",
-    text: "Hire a crew and put them on jobs. They chop, mine, fish, forage, hunt, smith, cook and craft for hours while the game is closed. Checking in takes a few taps.",
+    text: "Put your crew on jobs and they chop, mine, fish, forage, hunt, smith, cook and craft for hours while the game is closed. Checking in takes a few taps.",
   },
   {
-    art: "/images/art-gear.png",
-    w: 176,
-    h: 40,
-    alt: "The same fighter in better and better armour, starting from scrap.",
+    icon: "/images/icon-gear.png",
     title: "Gear you can see",
-    text: "Tier after tier of arms and armour, starting from scrap, plus kits for sailors, archers and mages. Each piece needs a level to wear, and two trinket slots hold work tools and lanterns. Everything a member wears is drawn on them.",
+    text: "Tier after tier of arms and armour, starting from scrap. Everything a member wears is drawn on them.",
   },
   {
-    art: "/images/art-dragons.png",
-    w: 208,
-    h: 40,
-    alt: "A small teal dragon, and the dark outlines of others not yet met.",
+    icon: "/images/icon-dragon.png",
     title: "Dragons to raise",
-    text: "A young dragon circles your camp from the first day. Feed it and it stays. It isn't the only one. The others are for you to find.",
+    text: "A young dragon circles your camp from the first day. Feed it and it stays. There are others to find.",
   },
   {
-    art: "/images/art-raids.png",
-    w: 208,
-    h: 52,
-    alt: "A fighter, an archer and a mage facing a wolf and a stone guardian.",
+    icon: "/images/icon-boss.png",
     title: "Bosses you fight yourself",
-    text: "Go back to places you've beaten and lead the fight against their bosses, seen from above. Read the big moves and eat when you must while your companions fight beside you. Melee beats Range, Range beats Magic, Magic beats Melee.",
+    text: "Lead the fight against each place's boss, seen from above. Melee beats Range, Range beats Magic, Magic beats Melee.",
   },
-  {
-    art: "/images/art-ships.png",
-    w: 300,
-    h: 84,
-    alt: "A raft, a sloop and a galleon.",
-    title: "From a raft to a galleon",
-    text: "Build your boat up stage by stage. Send her on voyages, run cargo to market, and cross the water to a new camp at Saltmire.",
-  },
-  {
-    art: "/images/art-camp.png",
-    w: 135,
-    h: 33,
-    scale: 3,
-    alt: "A market cart, a campfire, a small grey cat and a chicken.",
-    title: "A camp with a life of its own",
-    text: "Market carts roll in. Fighters work the hunting grounds and take on bounties from the board. Boss pets you've won trot about the yard. Now and then an angry chicken runs through camp. Catch it for a few coins.",
-  },
-];
-
-const shots = [
-  { src: "/images/shot-camp.webp", alt: "The guild's camp by day: a stone hall, a fire, a map board and a small teal dragon." },
-  { src: "/images/shot-dragon.webp", alt: "The dragon at the camp." },
-  { src: "/images/shot-map.webp", alt: "The world map, with places to send a party." },
-  { src: "/images/shot-raid.webp", alt: "A raid in progress." },
-  { src: "/images/shot-den.webp", alt: "A fight in the Wolf Den." },
-  { src: "/images/shot-ruin.webp", alt: "The Ruin and its guardian." },
-  { src: "/images/shot-watch.webp", alt: "The dragon's view of a party on the road." },
-  { src: "/images/shot-back.webp", alt: "A party home from an expedition with what it found." },
-  { src: "/images/shot-grow.webp", alt: "The guild grown larger." },
 ];
 ---
 
 <BaseLayout title={site.name}>
   <section class="hero" aria-labelledby="hero-title">
     <div class="container hero-copy">
-      <p class="eyebrow">An idle guild game for iPhone</p>
+      <p class="eyebrow">An idle guild game for iPhone and Android</p>
       <h1 id="hero-title">{site.name}</h1>
       <p class="hero-tagline">{site.tagline}</p>
       <div class="btn-row">
@@ -81,7 +40,7 @@ const shots = [
             <a href={site.testFlightUrl || site.discord} class="btn" rel="noopener">Join the beta</a>
           )
         }
-        <a href="#trailer" class="btn btn-ghost">Watch the trailer</a>
+        <a href="#teaser" class="btn btn-ghost">Watch the teaser</a>
       </div>
       <p class="hero-note">
         {site.appStoreUrl ? "Free to start. No ads." : `${site.status}. Free to start, no ads.`}
@@ -89,10 +48,10 @@ const shots = [
     </div>
     <img
       class="hero-art pixel"
-      src="/images/hero-night.png"
-      width="480"
-      height="210"
-      alt="A guild camp at night: a stone hall with lit windows, three guild members round a fire, and a teal dragon under a crescent moon."
+      src="/images/hero-camp.png"
+      width="780"
+      height="420"
+      alt="Briarhold's camp from above at night, as the game draws it: the guildhouse, the fire, the quest board, the cook pot, the forge and the dragon asleep in its nest."
     />
   </section>
 
@@ -101,26 +60,16 @@ const shots = [
       <p class="eyebrow">The game</p>
       <h2 id="game-title">Set them to work. Come back to more.</h2>
       <p class="lead">
-        You lead a small guild in Briarhold. They gather, craft and go out on
-        expeditions while you get on with your day. When you check in, you
-        collect what they brought home, gear them up and send them further.
+        You lead a small guild in Briarhold. They gather, craft and set out by
+        land and sea while you get on with your day. Check in to collect what
+        they brought home, gear them up and send them further.
       </p>
 
       <ul class="feature-grid" role="list">
         {
           features.map((f) => (
             <li class="panel feature">
-              <div class="stage">
-                <img
-                  class="pixel"
-                  src={f.art}
-                  alt={f.alt}
-                  width={f.w}
-                  height={f.h}
-                  style={`--w:${(f.w * (f.scale ?? 2)) / 2}`}
-                  loading="lazy"
-                />
-              </div>
+              <img class="pixel feature-icon" src={f.icon} alt="" width="16" height="16" loading="lazy" />
               <h3>{f.title}</h3>
               <p>{f.text}</p>
             </li>
@@ -129,40 +78,35 @@ const shots = [
       </ul>
 
       <div class="panel skills">
-        <img class="pixel" src="/images/art-skills.png" alt="" width="196" height="20" loading="lazy" />
-        <h3>Skills to train</h3>
+        <img class="pixel" src="/images/art-skills.png" alt="" width="256" height="16" loading="lazy" />
+        <h3>{skills.length} skills to train</h3>
         <ul class="chips" role="list">
           {skills.map((s) => <li>{s}</li>)}
         </ul>
       </div>
-
-      <p class="growing">
-        The game is still growing. More places, raids and dragons are on the way.
-      </p>
     </div>
   </section>
 
-  <section class="section section-alt" id="trailer" aria-labelledby="trailer-title">
+  <section class="section section-alt" id="teaser" aria-labelledby="teaser-title">
     <div class="container trailer-row">
       <div class="phone">
         <video
           controls
           playsinline
           preload="none"
-          poster="/images/shot-camp-plain.webp"
+          poster="/images/teaser-title.webp"
           width="720"
           height="1280"
-          aria-label="Hatchfire trailer, 48 seconds"
+          aria-label="Hatchfire teaser, 15 seconds"
         >
-          <source src="/video/draigon-idle-trailer.mp4" type="video/mp4" />
+          <source src="/video/hatchfire-teaser.mp4" type="video/mp4" />
         </video>
       </div>
       <div>
-        <p class="eyebrow">Trailer</p>
-        <h2 id="trailer-title">Under a minute of it</h2>
+        <p class="eyebrow">Teaser</p>
+        <h2 id="teaser-title">An egg by the fire</h2>
         <p class="lead">
-          The camp, the gear, the dragon, the sea and a raid. Everything in the
-          trailer is the game's own art.
+          Fifteen seconds, made from the game's own art and sounds.
         </p>
         <ul class="ticks" role="list">
           <li>Plays in short check-ins. No energy, no timers to pay past.</li>
@@ -171,19 +115,6 @@ const shots = [
         </ul>
       </div>
     </div>
-
-    <div class="container">
-      <h3 class="strip-title">Scenes from the trailers</h3>
-    </div>
-    <ul class="shot-strip" role="list" tabindex="0" aria-label="Scenes from the trailers">
-      {
-        shots.map((s) => (
-          <li>
-            <img src={s.src} alt={s.alt} width="540" height="960" loading="lazy" />
-          </li>
-        ))
-      }
-    </ul>
   </section>
 
   <section class="section" id="price" aria-labelledby="price-title">
@@ -192,20 +123,17 @@ const shots = [
         <p class="eyebrow">Price</p>
         <h2 id="price-title">Free to start. One purchase for the rest.</h2>
         <p class="lead">
-          All of Briarhold is free: the camp, its boss fights, the first boats and
-          a fight at sea. That's days of play before you pay anything.
-        </p>
-        <p class="lead">
-          One purchase of {site.price} opens the Saltmire Coast. There are no ads and
-          nothing else to buy.
+          All of Briarhold is free: the camp, its boss fights, Maren's boats and
+          a fight at sea. One purchase of {site.price} opens the rest. No ads,
+          and nothing else to buy.
         </p>
       </div>
       <div class="panel price-card">
         <p class="price-tag">{site.price}<span>once</span></p>
         <h3>The Saltmire Coast</h3>
         <ul class="ticks" role="list">
-          <li>Saltmire: a new camp to build, across the water</li>
-          <li>Bigger ships, up to the Galleon</li>
+          <li>Saltmire: a second camp to build, across the water</li>
+          <li>Marlow's big boats, up to the Galleon</li>
           <li>The Blue Lamp: the story goes on</li>
           <li>More places to sail and fight, and the woods beyond</li>
         </ul>
@@ -215,20 +143,17 @@ const shots = [
   </section>
 
   <section class="section section-alt" id="follow" aria-labelledby="follow-title">
-    <div class="container follow-row">
-      <div class="panel">
+    <div class="container">
+      <div class="panel follow">
         <h2 id="follow-title">Hear when it's out</h2>
-        <p>One email when the game is on the App Store, and the odd one for a big update.</p>
+        <p>
+          One email when the game is out, and the odd one for a big update. Or
+          play the beta now: ask for a place on the Discord, where bugs and ideas
+          go too.
+        </p>
         <div class="kit-embed">
           <script is:inline async data-uid={site.kitUid} src={site.kitSrc}></script>
         </div>
-      </div>
-      <div class="panel">
-        <h2>Play it now</h2>
-        <p>
-          The beta runs through TestFlight. Ask for a place on the Discord. It's also
-          where bugs and ideas go.
-        </p>
         <div class="btn-row">
           <a href={site.discord} class="btn" rel="noopener">Join the Discord</a>
           <a href={site.wiki} class="btn btn-ghost" rel="noopener">Read the wiki</a>

@@ -401,7 +401,8 @@ ul {
   color: var(--muted);
 }
 
-/* The art is 480 x 210. Its top half is sky, so the words sit over it. */
+/* The camp from above, 780 x 420. Its top fades into the night, so the
+   words sit over it. */
 .hero-art {
   width: max(100%, 760px);
   max-width: none;
@@ -441,35 +442,19 @@ ul {
 }
 
 .feature {
-  padding: 0 0 20px;
-  overflow: hidden;
+  padding: 22px;
 }
 
-.feature h3,
-.feature p {
-  padding-inline: 22px;
+/* The game's own 16 px icon, at 3x. */
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
 }
 
 .feature p {
   color: var(--muted);
   margin: 0;
-}
-
-/* A little stage for the sprites: dusk sky and a strip of grass. */
-.stage {
-  display: grid;
-  place-items: end center;
-  height: 190px;
-  padding: 0 12px 22px;
-  margin-bottom: 18px;
-  background:
-    linear-gradient(to top, var(--grass) 0 30px, transparent 30px),
-    linear-gradient(to bottom, #171430, #2b2547 70%, #3a2f4f);
-  border-bottom: 2px solid var(--shadow);
-}
-
-.stage img {
-  width: min(100%, calc(var(--w) * 2px));
 }
 
 .skills {
@@ -480,7 +465,7 @@ ul {
 }
 
 .skills img {
-  width: min(100%, 392px);
+  width: min(100%, 512px);
 }
 
 .skills h3 {
@@ -552,36 +537,6 @@ ul {
   background: #0b0a10;
 }
 
-.strip-title {
-  margin-top: clamp(40px, 6vw, 64px);
-  color: var(--muted);
-  font-size: 1rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.shot-strip {
-  list-style: none;
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  padding: 6px max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter))) 18px;
-  scrollbar-color: var(--line) transparent;
-}
-
-.shot-strip li {
-  flex: 0 0 auto;
-  width: clamp(170px, 42vw, 216px);
-  scroll-snap-align: center;
-}
-
-.shot-strip img {
-  border: 2px solid var(--line);
-  border-radius: 12px;
-  box-shadow: 0 5px 0 var(--shadow);
-}
-
 /* ---------- Price ---------- */
 
 .price-row {
@@ -621,13 +576,12 @@ ul {
 
 /* ---------- Follow ---------- */
 
-.follow-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+.follow {
+  max-width: 680px;
+  margin-inline: auto;
 }
 
-.follow-row p {
+.follow p {
   color: var(--muted);
 }
 
@@ -876,7 +830,6 @@ ul {
   .feature-grid,
   .trailer-row,
   .price-row,
-  .follow-row,
   .press-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -884,10 +837,6 @@ ul {
   .phone {
     max-width: 280px;
     margin-inline: auto;
-  }
-
-  .stage {
-    height: 160px;
   }
 
   .footer-grid {
