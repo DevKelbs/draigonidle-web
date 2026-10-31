@@ -6,7 +6,7 @@ export const site = {
   tagline: "Run a guild. Raise a dragon. Fight the bosses yourself.",
   description:
     "Hatchfire is an idle guild game for iPhone and Android. Your guild gathers, crafts and sails while you're away. You gear them up, raise dragons and fight the bosses yourself.",
-  url: "https://draigonidle.com",
+  url: "https://playhatchfire.com",
 
   // Who makes it.
   studio: "Stonemill Studios",
@@ -25,7 +25,7 @@ export const site = {
   discord: "https://discord.gg/8qzfC86AFq",
   x: "https://x.com/DraigonIdle",
   reddit: "https://www.reddit.com/user/draigonidle/",
-  wiki: "https://wiki.draigonidle.com",
+  wiki: "https://wiki.playhatchfire.com",
 
   // The Kit (newsletter) form.
   kitUid: "6b4067efe9",

@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://draigonidle.com",
+  site: "https://playhatchfire.com",
   output: "static",
   integrations: [sitemap()],
   adapter: cloudflare(),

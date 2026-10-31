@@ -1,6 +1,6 @@
-# draigonidle.com
+# playhatchfire.com
 
-The website for **Hatchfire** (called Draigon Idle until October 2026), an idle guild game for iPhone. The domain, the handles and the file names keep the old name.
+The website for **Hatchfire** (called Draigon Idle until October 2026), an idle guild game for iPhone. It lives at playhatchfire.com (draigonidle.com points here too); the handles and the file names keep the old name.
 
 Built with [Astro](https://astro.build) and deployed to [Cloudflare Pages](https://pages.cloudflare.com/). Pushing to `main` deploys it.
 
